@@ -1,0 +1,241 @@
+# Data Collection Online {#dataonline}
+
+https://docs.google.com/document/d/1adPa6r9duTVJesTIoEhvcyCDbHPPPzkIQ4tq01WEJ4s/pub
+
+Making Web Experiments for MTurk
+Michael Frank and Long Ouyang
+
+Psych 251 and 254
+
+
+
+How To Make a Web Experiment
+
+Basically, go find one and change stuff until it does what you want. Understanding all the parts is somewhat optional. But it will help to have a bit of a framework for understanding. To develop this framework, read on below (exploring links).
+
+
+HTML, JavaScript, and CSS
+
+The Document-Object Model (DOM) introduced
+
+HTML: the skeleton of the content - text, frame for the layout
+JavaScript: the code to interact with it
+CSS: the style sheet to provide formatting
+
+The fable of “the dude” vs. “the machine”
+
+Standard programming is taught as a series of imperatives. There’s a little guy inside the computer, and you tell him what to do, line after line. “Hey guy, for i = 1:10, do this thing.” This way of thinking doesn’t work for web pages. There’s no dude.
+
+
+Think about this from the perspective of the web. Your code is running on someone else’s computer, so you don’t get to send your dude to their computer. When your webpage gets to their computer, they get to do what they want with it – click the parts they want, etc.
+
+
+Instead, what you’re trying to do is build a Rube Goldberg machine so that all of the things the dude would normally do still happen – they just happen when the user interacts with the page. So instead of saying, “dude, wait patiently until someone presses a button and then do X,” you need to set up a machine such that there’s a button (HTML) and it looks nice (CSS) and the back of it is hooked up to do X whenever someone hits it (JavaScript)
+
+
+Poking the web via Chrome Developer Mode
+
+Chrome (browser) developer mode (CMD+OPT+J) is extremely useful for looking at how the internet works. Try it out first on a super simple webpage. Now try looking at a complicated page. Features to note:
+
+View > Developer > View Source – can see the whole page source
+Little tablet button on top of developer console – can see mobile version
+JavaScript console – fun for investigating and debugging
+
+An example of a working web experiment
+
+Here’s the even-odd experiment repository. Even-odd is a simple RT experiment that collects keypresses about judgments on whether numbers are even or odd. The nice thing is that it’s all super well-documented, so you can see how it works.
+
+
+Try out the experiment
+
+Even-odd HTML
+
+Even-odd JS
+
+Even-odd CSS
+
+
+Here are more related experiments that all share that same basic template but do different stuff:
+
+Simple survey (See it in action)
+More complex experiment (See it in action)
+Browse other student projects in the course repo for more ideas
+
+How do you get the data out
+
+JavaScript allows us to package up data in the JSON format. This is a good format to store things in because it’s a text format that MTurk can pass through it to R and R can read and decode into a dataframe with just a little bit of extra work.
+
+
+mmturkey is a small library that helps with this task by packaging up the data from the experiment into the kind of data you get back from mturk.
+
+
+Using External HITs to run HTML/CSS/JS experiments on MTurk
+
+How Turk External HITs work
+
+
+You prepay for HITs
+You submit your HIT
+Workers previews HIT, accepts, and starts working.
+Your preview screen is like an advertisement for your task. You give a textual description of what you do in the HIT or maybe some pictures. You don’t want users starting the task right in the ad, though  (can check turk.previewMode from mmturkey to detect if you’re in preview mode and, if so, turning off the “start the experiment” button)
+Then, one of three things:
+Worker abandons.
+Worker returns.
+Worker finishes your experiment. Your experiment then tells Turk that this user is finished (and possibly sends along data). We’ll use Turk to store our data.
+You approve/reject the work (either on external HITs page or through the API).
+After approving, you can also give bonuses / contact the Turkers.
+Turkers organize themselves on social media and gossip about you (subreddit, TurkerNation, Turkopticon)
+reddit.com/r/hitsworthturkingfor
+turkopticon.ucsd.edu
+turkernation.com
+
+Terminology: HITs vs. assignments
+
+BigSoftwareCompany: Many HITs. Each HIT has one assignment. (maybe a couple). Example: BigSoftwareCompany has a bunch pictures that they want classified (landscape/portrait). They create a single HIT for each picture. They create a very small number of assignments per HIT.
+
+
+You: One experiment = One HIT. Each HIT has many assignments (as many assignments as you want participants).
+
+
+Submitting an External Hit Using Cosub
+
+Cosub is here  - cosub stands for “child of submiterator” (where that was a previous package for doing this kind of thing).
+
+
+Cosub’s workflow is really easy. You write:
+
+cosub create   # create hit based on settings in settings.json
+cosub update   # update hit based on settings in settings.json
+cosub add <N> assignments
+cosub add <N> {days/hours/minutes}
+cosub expire   # expire hit
+cosub download # download results to sandbox-results/ or production-results/
+cosub status   # summarize HIT (settings, time left, # assignments, ...)
+cosub history  # show history of cosub actions
+And you write cosub -p if you want it to happen for real (default is sandbox).
+
+
+To install cosub, write:
+
+See if you have Pip installer by typing “pip show pip” in terminal
+sudo pip install git+git://github.com/longouyang/cosub.git
+
+Cosub assumes a particular folder structure, which looks mostly like this:
+
+Projects/
+
+   |-- oed
+
+   |    \-- experiment
+
+   |-- mturk
+
+   |-- model
+
+   |-- data
+
+   |-- report
+
+   |-- presentations
+
+   |-- reimbursements
+
+   
+
+Cosub also assumes two files: auth.json and settings.json, both in the mturk folder.
+
+auth.json (obtain info from Amazon console - see here for walkthrough)
+settings.json
+It’s CRITICAL that these not go on github. DO NOT commit the mturk folder. Or else someone will use up all your money on botnets. We will give you credentials for this.
+
+
+
+Resources
+
+HTML for consent text
+
+<p class="block-text" id="legal">By answering the following questions, you are participating in a study being performed by cognitive scientists in the Stanford Department of Psychology. If you have questions about this research, please contact us at <a href="mailto://stanfordpsych251@gmail.com.">stanfordpsych251@gmail.com</a>. You must be  at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the  following questions. You may decline further participation, at any time,  without adverse consequences. Your anonymity is assured; the researchers  who have requested your participation will not receive any personal information  about you. Note however that we have recently been made aware that your public Amazon.com profile can be accessed via your worker ID if you do not choose  to opt out. If you would like to opt out of this feature, you may follow instructions available  <a http://www.amazon.com/gp/help/customer/display.html?nodeId=16465241">here</a>.</p>
+
+
+Example auth.json
+
+{
+
+    "access_id": "AGFGFD…..",
+
+    "secret_key": "oiYf…."
+
+}
+
+
+Example settings.json
+
+{
+
+    "title":               "Numbers game",
+
+    "description":         "A simple game about categorizing numbers",
+
+    "keywords":            "Memory, cards",
+
+    "url":                 "https://longouyang.github.io/even-odd/even-odd.html",
+
+    "frame_height":         450,
+
+    "assignment_duration":  "1 hour",
+
+    "auto_approval_delay":  "5 minutes",
+
+    "reward":               0.60,
+
+    "qualifications": {
+
+        "location": "US",
+
+        "approval_percentage": 85
+
+    }
+
+}
+
+
+Some troubleshooting ideas
+
+Problem: iframe that your task gets displayed in is tiny.
+
+Solution:
+
+Write experiment to run in maximized popup window / fullscreen mode.
+
+Problem: subtle differences across browsers cause errors for some Turkers.
+
+Solutions:
+
+Require workers to use Chrome (or at least not IE)
+Write your experiment using cross-browser libraries in techniques
+
+Problem: Turk loads over https. (quickly mention file: vs http: vs https:)
+
+Solutions:
+
+Use relative protocol and test using a local HTTP server (e.g, MAMP)
+
+Problem: HITs eventually get deleted from Amazon.
+
+Solutions:
+
+Save all results immediately. Never delete anything (“append only”)
+
+Problem: Duplicate workers (<3%?)
+
+Solutions:
+
+Network fingerprinting (public + private IP addresses)
+Browser fingerprinting (cookies, localStorage, supercookies, display size)
+
+Problem: Differential dropout.
+
+Solutions:
+
+Measure everyone (more on this later)
+

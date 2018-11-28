@@ -1,0 +1,39 @@
+# Preregistration {#preregistration}
+
+
+Which methodological reforms will be most useful for increasing reproducibility and replicability? I've gone back and forth on this blog about a number of possible reforms to our methodological practices, and I've been particularly ambivalent in the past about [preregistration](https://www.theguardian.com/science/blog/2013/jun/05/trust-in-science-study-pre-registration), the process of registering methodological and analytic decisions prior to data collection. In a post from about three years ago, I worried that [preregistration was too time-consuming](http://babieslearninglanguage.blogspot.com/2015/08/a-moderates-view-of-reproducibility.html) for small-scale studies, even if it was appropriate for large-scale studies. And last year, I worried whether [preregistration validates the practice of running (and publishing) one-offs](http://babieslearninglanguage.blogspot.com/2015/08/a-moderates-view-of-reproducibility.html), rather than running cumulative study sets. I think these worries were overblown, and resulted from my lack of understanding of the process.  
+  
+Instead, I want to argue here that we should be preregistering every experiment do. The cost is extremely low and the benefits – both to the research process and to the credibility of our results – are substantial. Starting in the past few months, my lab has begun to preregister every study we run. You should too.  
+  
+The key insights for me were:  
+
+1.  Different preregistrations can have different levels of detail. For some studies, you write down "we're going to run 24 participants in each condition, and exclude them if they don't finish." For others you specify the full analytic model and the plots you want to make. But there is no study for which you know nothing ahead of time. 
+2.  You can save a ton of time by having default analytic practices that don't need to be registered every time. For us these live on our lab wiki (which is private but I've put a copy [here](https://docs.google.com/document/d/1olbnzgy41mKflFpY9PFY-1ilshll--FyzufKYUPf0cE/edit?usp=sharing)).  
+3.  It helps me get confirmation on what's ready to run. If it's registered, then I know that we're ready to collect data. I especially like the interface on AsPredicted, that asks coauthors to sign off prior to the registration going through. (This also incidentally makes some authorship assumptions explicit). 
+
+  
+
+#### How to Preregister
+
+We've been using two different platforms: the [Open Science Framework](http://osf.io/) (OSF), and [AsPredicted.org](http://aspredicted.org/).  
+  
+OSF is nice because we tend to use [github for managing code and data](http://babieslearninglanguage.blogspot.com/2014/04/data-analysis-one-step-deeper.html). Using this workflow, we run our pilot study (often 2 – 4 participants), then we simply write as much of our analysis script as we can, link it to OSF, and preregister. No time is lost - you had to write the script anyway. This prereg strategy assumes you can implement all the analyses you plan, though. It's typically better for projects that are a bit further along and for researchers who are more comfortable thinking in code.  
+  
+In contrast, AsPredicted.org has a one-size-fits-all template that asks for basics of method, analyses, and sample to be specified in advance via a prose statement. This seems better to me for early stage projects where more of the general assumptions need to be written out rather than e.g., details of analytic model specifications.  
+  
+
+#### Why Preregister
+
+There are may reasons, but here are just a few.  
+  
+**1\. It increases confidence in analytic results.** This is the big one. Once you have seen the analysis you planned come out as you said it would, you just feel really good. And in contrast, when you look at other experiments where you see someone (perhaps yourself) digging through the data post-hoc before seeing a particular signal, it really tempers your confidence in those results.  
+**2\. It documents decisions you have to make anyway.** We always discuss planned sample size, but I sometimes forget what we planned. And you're going to have to make all the choices about exclusions anyway.  
+  
+**3\. It's a really good exercise for students.** If a student is running an internship project and can't answer the questions on AsPredicted, that's a good signal they need to have more discussions with their supervisor about project planning.  
+  
+**4\. It doesn't stop you from exploring the data.** This is almost so obvious that it doesn't bear saying, but many folks feel like preregistrations decrease exploratory data analysis. I just don't see it. When you get a preregistered dataset back, and you don't see the measurements you were predicting, you're _more_ motivated to poke around and do the autopsy.  
+  
+
+#### **Conclusion**
+
+It costs nothing and makes you feel good. Just try it. It'll make you feel like a scientist.

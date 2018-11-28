@@ -1,0 +1,46 @@
+# Sample Size Planning {#samplesize}
+
+
+
+We were asked to consider what the big issues are in standardizing infancy methods. I think there's one big issue: statistical power. Infancy experiments are dramatically underpowered. So any given experiment we run tells us relatively little unless it has a lot of babies in it. This means that if we want good data, we need either to team up or else to slow down.  
+  
+
+#### 1\. Statistical power.
+
+The power on a test is the probability that the test will reject the null (at _p_ < .05), given the effect size. A general standard is that you want 80% power. So the smaller the effect, the larger the sample you need to have to detect that effect. We're talking about standard effect sizes here (Cohen's _d_), so if _d_ = 1, then the two groups are a standard deviation apart. That's a really big effect.  
+  
+A couple of facts to get you calibrated. The traditional sample size in infancy research is 16. Let's assume a within-subjects _t_-test. Then 16 infants gets you 80% power to detect an effect of around _d_ = .75\. That's a big effect, by most standards. But the important question is, how big is your average effect in infancy research?  
+  
+
+#### 2\. Facts on power in infancy research.
+
+Luckily, Sho Tsuji (another presenter in the roundtable), Christina Bergmann, and Alex Cristia have been getting together these [lovely databases of infant speech perception work](https://sites.google.com/site/chbergma/research/camas). And my student Molly Lewis is presenting a meta-analysis of the "mutual exclusivity phenomenon" in the posters on Saturday morning (edit: [link](http://figshare.com/articles/Disambiguation_Meta_Analysis/1348836)). There's some good news and some bad news. 
+
+*   Mutual exclusivity (ME) is really robust, at least with older kids. D is around 1, meaning you really can see this effect reliably with 16 kids (as you might have suspected). But if you go younger, you need substantially higher power and groups of 36 or more are warranted.
+*   Phoneme recognition is also pretty good. Traditional methods like high-amplitude sucking and conditioned head turn yield effect sizes over 1. On the other hand, head-turn preference only is around d = .5. So again, you need more like 36 infants per group to have decent power. 
+*   Word segmentation, on the other hand, not so good. The median effect size is just above .25. So your power in those studies is actually pretty close to zero. 
+
+Again thanks to Sho, Christina, and Alex for putting this stuff on the internet so I could play with it. I can't stress enough important that is.  
+  
+
+#### 3\. What does this mean?
+
+First, if you do underpowered experiments, you get junk. The best case is that you recognize that, but more often than not, what we do is over-interpret away some kind of spurious finding that we got with one age group or stimulus but not another, or with boys but not girls. Theory can provide some guide – so if you didn't expect a result, be _very_ skeptical unless you have high power!  
+  
+Second, all of this is about power to _reject the null_. So that means the situation is much worse when you want to see an age by stimulus interaction, or a difference between groups in the _magnitude_ of an effect (say, whether bilinguals show less mutual exclusivity than monolinguals). The power on these interaction tests will be _very_ low, and you are likely to need many dozens or hundreds of children to be able to test this kind of hypothesis accurately. Let's say for the sake of argument that we're looking at a difference of _d_ = .5 – that is, ME is .5 SDs stronger for monolinguals than bilinguals. That's a whopping difference. We need 200 kids to have 80% power on that interaction. Effects smaller than _d_ = .4, don't even bother testing interactions because you won't have the power to detect them. That's just the harsh statistical calculus.  
+  
+
+#### 4\. So where do we go from here?
+
+There are a bunch of options, and no one option is the only way forward – in fact, these are very complementary options:  
+  
+_You can slow down and test more kids_. This is a great option - we've started working with children's museums to try and collect much larger samples, and we've found these samples give us much more interesting and clear patterns of data. We can really see developmental quantitatively with 200+ kids.  
+  
+_You can team up_. Multiple labs working together can test the same number of kids but put the results together and get the power they need - with the added bonus of greater generalizability. You'll get papers with more authors, but that's the norm in many other sciences at this point. And if you team up, you will need to standardize – that means planning the stimuli out and sharing them across labs.  
+  
+_You can meta-analyze_. That means people need to share their data (or at least publish enough about it so that we can do all the analyses we need). I don’t know about Sho et al., but our experience has been that reporting standards are still very bad for developmental papers. We need information about effect size and variability.  
+  
+
+#### 5\. Conclusions
+
+It isn't just infancy research that is having trouble with this issue. Social psychologists are struggling with the lack of reproducibility in their area; neuroimaging is in a similar place, trying to figure out what to do because more than 12 fMRI scans is too expensive but 12 subjects doesn't give you any power. We are together figuring out that this is a tough position to be in. But pursuing open methods, collaboration, and high-powered studies will certainly help.

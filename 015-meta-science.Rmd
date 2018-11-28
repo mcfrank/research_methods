@@ -1,0 +1,101 @@
+# Meta-science and meta-analysis {#metascience}
+
+## Meta-analysis
+
+
+## Publication Bias
+
+_tl;dr: Thinking about projects that aren't (and may never be) finished. Should they necessarily be published?_  
+
+> One null result tells you about as much as one positive; not much. But a pattern of nulls demands attention. [#BringOutYerNulls](https://twitter.com/hashtag/BringOutYerNulls?src=hash)
+> 
+> — Micah Allen (@neuroconscience) [March 18, 2016](https://twitter.com/neuroconscience/status/710750950433095680)
+
+  
+
+> Suggestion: let's kick start this by tweeting some null results we had under the hashtag [#BringOutYerNulls](https://twitter.com/hashtag/BringOutYerNulls?src=hash). Bonus points if published!
+> 
+> — Micah Allen (@neuroconscience) [March 18, 2016](https://twitter.com/neuroconscience/status/710751131652255744)
+
+So, the other day there was a very nice conversation on twitter, started by Micah Allen and focusing on people clearing out their file-drawers and describing null findings. The original inspiration was a very interesting paper about [one lab's file drawer](http://blogs.discovermagazine.com/neuroskeptic/2016/03/17/open-the-file-drawer/), in which we got insight into the messy state of the evidence the lab had collected prior to its being packaged into conventional publications.  
+  
+The broader idea, of course, is that – since they don't fit as easily into conventional narratives of discovery – null findings are much less often published than positive findings. This publication bias then leads to an inflation of effect sizes, with many negative consequences downstream. And the response to problem of publication bias then appears to be simple: publish findings regardless of statistical significance, removing the bias in the literature. Hence, #bringoutyernulls.  
+  
+This narrative is a good one and an important one. But whenever the publication bias discussion come up, I have a contrarian instinct that I have a hard time suppressing. [I've written about this issue before](http://babieslearninglanguage.blogspot.com/2014/11/musings-on-file-drawer-effect.html), and in that previous piece I tried to articulate the cost-benefit calculation: while suppressing publication has a cost in terms of bias, publication itself also has a very significant cost to both authors (in writing, revising, and even funding publication) and readers (in sorting through and interpreting the literature). There really _is_ junk, the publication of which would be a net negative –whether because of errors or irrelevance. But today I want to talk about something else that bothers me about the analysis of publication bias I described above.  
+  
+  
+  
+This account of publication bias assumes a very particular story about experimental research: namely that the focus of our empirical investigation is the estimation of a single effect size associated with a phenomenon of interest. Now, there are certainly times when that model appears to be correct, especially in translational intervention studies where the question of interest is typically the difference in effect between treatment and control conditions.* And this is the paradigm that the [Registered Replication Reports](http://www.psychologicalscience.org/index.php/replication) have followed, finding a theoretically-central finding and then measuring its size across labs.  
+  
+But the majority of my projects simply do not follow this schema. Much of my work has focused on the development of quantitative theories of language use and language learning. Projects I work on typically do not look anything like running a two-condition experiment to show directional effects between treatment and control. They don't look like a classic 2x2 design with a predicted interaction that "shows mechanism." Instead, most of my work has focused on measuring inference or learning across a wide variety of conditions and then trying to understand sources of variability in the measurements, often using quantitative models – or failing that, competing verbal theories – to make predictions. In practice, this means papers are often either about gathering "descriptive" measurements, fitting models to these measurements, or – in the best case – both.  
+  
+From that perspective it often makes very little sense to think about these projects as yielding simple "nulls." Instead, they yield complex patterns of data that are more or less well-understood – they are empirical explorations instead of point estimates of a particular effect. And when my collaborators and I discuss whether or not to publish them, we often do so on grounds of whether they provide – as a holistic package – compelling evidence for or against a particular theoretical position. That's the same generally problematic logic that can lead to publication bias in simple effect size estimate cases.  But the key intuition here feels different to me.  
+  
+Here are two examples of pieces of work that I have not published, despite very large investments of time and effort. The first is a followup of some work I did where we examined [the numerical cognition of hunter gatherers whose language had no words for numbers](http://langcog.stanford.edu/papers/FEFG-cognition.pdf). The followup (with [Tom Honeyman](http://people.anu.edu.au/tom.honeyman/), at the time at ANU) looked at a group in Papua New Guinea who had been reported to have an interesting number system that was bounded at six. We did a bunch of experiments that hinted at the idea that different individuals understood the number system differently, and perhaps used it differently in a set of counting tasks. But in the end, we got data from only around 12 participants, and many were different degrees of bilingual, further confounding the findings. So we weren't able to make that particular claim, even though there was certainly a range of variation in numerical ability across the group.  
+  
+We could still publish the data from this investigation. I think they are moderately interesting. But as far as I know they don't speak for or against a particular theoretical construct of interest. So a paper reporting them wouldn't have much of a theoretical upshot, other than providing an interesting and complicated – but inconclusive – story about the variability of people's number concepts.  
+  
+The second piece was a followup of a [model of early word learning](http://langcog.stanford.edu/papers/FGT-psychscience2009.pdf) that I worked on with Noah Goodman and Josh Tenenbaum. That model was successful in capturing a number of phenomena, but since it came out a number of people have tried to work on it, mostly with limited success. The inference algorithm was complex and unwieldy, and the simulations required many hundreds of hours of computing time. So not a lot of direct followup work has used it, to my general chagrin. A couple of years ago, I spent a lot of time on a reimplementation of the model that had a cleaner mathematical description and a better inference scheme. ([Code and partial writeup here, if you're interested](https://github.com/mcfrank/dmww)).  But the results with this model weren't quite as good, though largely comparable, and even though the inference was somewhat faster, it wasn't really that fast. In addition, we couldn't make a new inference scheme – a [particle filter](https://en.wikipedia.org/wiki/Particle_filter) – work as well as we thought it would. So I don't think this particular model advances our conversation about early word learning sufficiently to warrant publication. It's a theoretical artifact of moderate interest, but it fails to capture new phenomena or outperform previous models.  
+  
+A theory is a way of creating expectations about observations under a particular set of conditions. In the "point estimate" regime, the theory leads to strong expectations about the experiment's result, regardless of outcome. In contrast, in the "empirical exploration" paradigm, it is very easy for the exploration to move outside of the conditions for which the theory makes strong predictions. The theories I was considering about numerical cognition had nothing much to say about bilingualism, and the sample size I could collect wouldn't allow the strong observations necessary for constructing a new theory. Similarly, nothing about the word learning theory I was interested in implementing in my model controlled whether particle filter inference schemes should work right. In both cases, the theory simply didn't have anything to say about the failure mode for the study.  
+  
+So perhaps the fundamental generalization from these projects is this:  
+  
+_An experiment that has as its goal estimating a single effect will nearly always provide information relevant to that effect; in contrast, a study whose goal is to provide information relevant to deciding between multi-dimensional theories can fail uninformatively. _  
+  
+I am not advocating for one or the other of these ways of working. They are synergistic with one another. Effect size estimation is important for a variety of cases, both where we are beginning to build theory and for when theories are well-established. But [as I've written before](http://babieslearninglanguage.blogspot.com/2015/09/descriptive-vs-optimal-bayesian-modeling.html), concerns about replicability and estimation of individual effects are most important in the absence of strong quantitative theory.  
+  
+
+\-\-\-
+
+\* These are also precisely the cases where the classic NHST logic holds and the single _p_-value for the _a priori_  between groups _t_-test is a pretty good measure of what we care about for inference.  In the context of critiques of NHST, we acknowledge that this match between the actual statistical paradigm and our research practice is a rare event. Why do we not acknowledge the same weaknesses of the estimation paradigm as well?
+
+
+
+
+
+tl;dr: Even if you love science, you don't have to publish every experiment you conduct.  
+  
+I was talking with a collaborator a few days ago and discussing which of a series of experiments we should include in our writeup. In the course of this conversation, he expressed uncertainty about whether we were courting ethical violation by choosing to exclude from a potential publication a set of generally consistent but somewhat more poorly executed studies. Publication bias is a major problem in the social sciences (and elsewhere).* Could we be contributing to the so-called "[file drawer problem](http://www.psychfiledrawer.org/TheFiledrawerProblem.php)," in which meta-analytic estimates of effects are inflated by the failure to publish negative findings?  
+  
+I'm pretty sure the answer is "no."  
+  
+Some time during my first year of graduate school, I had run a few studies that produced positive findings (e.g., statistically significant differences between groups).  I went to my advisor and started saying all kinds of big things about how I would publish them and they'd be in this paper and that paper and the other; probably it came off as quite grandiose. After listening for a while, he said, "we don't publish every study we run."  
+  
+His point was that a publishable study – or set of studies – is not one that produces a "significant" result. A publishable study is one that advances our knowledge, whether the result is statistically significant or not. If a study is uninteresting, it may not be worth publishing. Of course, the devil is in the details of what "worth publishing" means, so I've been thinking about how you might assess this. Here's my proposal:  
+
+> _It is unethical to avoid publishing a result if a knowledgeable and adversarial reviewer could make a reasonable case that your publication decision was due to a theoretical commitment to one outcome over another. _
+
+I'll walk through both sides of this proposal below. If you have feedback, or counterexamples, I'd be eager to hear them. 
+
+  
+
+**When it's fine not to publish.** First, everyone doesn't have an obligation to publish scientific research. For example, I've supervised some undergraduate honors theses that were quite good, but the students weren't interested in a career in science. I regret that they didn't do the work to write up their data for publication, but I don't think they were being unethical, at least from the perspective of publication bias (if they had discovered a lifesaving drug, the analysis might be different).
+
+  
+
+Second, publication has a cost. The cost is mostly in terms of time, but time is translatable directly into money (whether from salary or from research opportunity cost). Under the current publication system, publishing a peer-reviewed paper is [extremely slow](http://babieslearninglanguage.blogspot.com/2013/08/on-publication-lag.html). In addition to the authors' writing time, a paper takes hours of time from editors and reviewers, and much thought and effort in responding to reviews. A discussion of the merits of peer review is a topic for another post (spoiler: I'm in favor of it).** But even the most radical alternatives – think generalized [arXiv](http://arxiv.org/) – do not eliminate the cost of writing a clear, useful manuscript. 
+
+  
+So on a cost-benefit analysis, there is a lot of work that shouldn't be written up. For example, cases of experimenter error are pretty clear cut. If I screw up my stimuli and Group A's treatment was contaminated with items that Group B should have seen, then what do we learn? The generalizable knowledge from that kind of experiment is pretty thin. It seems uncontroversial that this sort of results aren't worth publishing.  
+  
+What about correct but boring experiments? What if I show that the Stroop effect is unaffected by font choice – or perhaps I show a tiny, statistically significant but not meaningful, effect of serif fonts on Stroop effect.*** For either of these experiments, I imagine I could find someone to publish them. In principle, if they were well-executed, PLoS ONE would be a viable venue, since they [do not referee for impact](http://www.plosone.org/static/information). But I am not sure why anyone would be particularly interested, and I don't think it'd be unethical not to publish them.  
+  
+**When it's NOT fine not to publish. **First, when a finding is "null" – meaning, not statistically significant despite your expectation that it would be. Someone who held an alternative position (e.g. that the finding would not be predicted to yield a significant result) could say that you were biasing the literature due to your theoretical commitment. This is probably the most common case of publication bias.  
+  
+Second, if your finding is inconsistent with a particular theory, this fact also should not be used in the decision about publication. Obviously, an adversarial critic could argue – rightly – that you suppressed the finding, which in turn leads to an exaggeration in the degree of published evidence for your preferred theory.  
+  
+Third, when a finding (finding #1) is contradictory to another finding (finding #2) that you do intend to publish. Here, just think about if your reviewer knew about #1 as well. Could you justify on independent, _a priori_ grounds that you should not publish #1, independent of the theory? In my experience, the only time that is possible is if #1 is clearly a flawed experiment and does not have any evidential value for the question you're interested in.****  
+  
+**Conclusions.** Publication bias is a significant issue, and we need use a variety of tools to combat it. [Funnel plots](http://en.wikipedia.org/wiki/Funnel_plot) are a useful tool, and some [new work by Simonsohn et al.](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2377290) uses p-curve analysis. But the solution is certainly not to assume that researchers should publish _all_ their experiments – that solution might be as bad as the problem, in terms of the cost for scientific productivity. Instead, to determine if they are suppressing evidence due to their own biases, researchers should consider applying an ethical test like the one I proposed above.  
+  
+\-\-\-\-  
+(The footnotes here got a little out of control).  
+  
+\* A recent, [high impact study](http://web.stanford.edu/~neilm/malhotra.pdf) used TESS ([Time-Sharing Experiments in the Social Sciences](http://www.tessexperiments.org/), a resource for doing pre-peer reviewed experiments with large, representative samples) to estimate publication bias in the social sciences. I like this study a lot, but I am not sure how general the bias estimates are, because TESS is a special case. TESS is a limited resource, and experiments submitted to TESS undergo substantial additional scrutiny due to TESS's pre-data collection review. They are relatively more well-vetted for potential theoretical impact, and substantially less likely to have basic errors, compared with a one-off study using a convenience sample. I suspect – based on no data except my own experience – that relatively _more_ data is left unpublished than the TESS study's estimate, but also that relatively less of it _should_ be published.  
+  
+\*\* You could always say, hey, we should just put all our data online. We actually do [something sort of like that](http://babieslearninglanguage.blogspot.com/2014/04/data-analysis-one-step-deeper.html). But you can't just go to github.com/langcog and easily find out whether we conducted an experiment on your theoretical topic of choice. Reporting experiments is not just about putting the data out there – you need description, links to relevant literature, etc.  
+  
+\*\*\* Actually, someone has done [Stroop for fonts](http://ijg.cgpublisher.com/product/pub.154/prod.515), though that's a different and slightly more interesting experiment.  
+  
+\*\*\*\* Here's a trickier one. If a finding is _consistent_ with a theory, could this consistency be grounds to avoid publishing it? A Popperian falsificationist scientist should never publish data that are simply consistent with a particular theory, because those data have no value. But basically no one operates in this way – we all routinely make predictions from theory and are excited when they are satisfied.  For [a Bayesian scientist](http://www.strevens.org/research/simplexuality/Bayes.pdf) of this type, data consistent with a theory are important. But some data may be consistent with many theories and hence provide little evidential value. Other data may be consistent with a theory, but that theory is already so well-supported, so the experiments make little change in our overall degree of belief – consider the case of experiments supportive of Newton's laws, or of further Stroop replications. These cases also potentially work under the adversarial reviewer test, but only if we include the cost-benefit analysis above, and the logic is dicier. A reviewer could accuse you of bias against the Stroop effect, but you might respond that you just didn't think the incremental evidence was worth the effort. Nevertheless, this balance seems less straightforward. Reflecting this complexity, perhaps the failure to publish confirmatory evidence actually does matter. In a talk I heard last spring, [John Ioannidis](https://med.stanford.edu/profiles/john-ioannidis) made the point that there are basically no medical interventions out there with _d_ (standardized effect size) > 3 or so (I forget the exact number). I think this is actually a case of publication bias _against_ confirmation of obvious effects. For example, I can't find a clinical trial of the rabies vaccine anywhere after Pasteur – because [the mortality rate without the vaccine is apparently around 99%, and with the vaccine most people survive](http://en.wikipedia.org/wiki/Rabies). The effect size there is just enormous – so big that you should just treat people! So actually the literature does have systematic bias _against_ really big effects.

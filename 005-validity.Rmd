@@ -1,0 +1,15 @@
+# Validity and Sampling {#validity}
+
+All about generalization
+
+## Validity
+
+
+  
+[An interesting op-ed in today's NYT](http://www.nytimes.com/2013/05/12/opinion/sunday/too-much-helicopter-parenting.html?ref=opinion&_r=1&) suggests that helping others is not always effective (e.g. supporting a child in college or a spouse to complete a fitness goal). Finkel and Fitzsimons (the authors) set out a couple of criteria for when help is best: for example, when it's clearly needed and when it's complementary to the recipient's efforts. Overall I enjoyed the article, and it's a nice addition to some [ongoing discussion of the consequences of helicopter parenting](http://www.newyorker.com/arts/critics/books/2012/07/02/120702crbo_books_kolbert). One small section bothered me though:  
+
+> The good news is that people seem to be adept at understanding when others need help, as shown in a fascinating observational study of barroom brawls. This study, led by the sociologist Michael J. Parks of Penn State and published online in March in the journal Aggressive Behavior, showed that bystanders are especially likely to intervene to end the brawl to the extent that the brawlers are intoxicated. That is, observers stepped in to help precisely when that help was most needed.
+
+I was quite surprised that the authors cited evidence on helping in brawls as evidence for our sensitivity to need in overall helping behavior. To me this seemed like a clear example of problematic [construct validity](http://en.wikipedia.org/wiki/Construct_validity): why is jumping into a fight in a bar the same as monitoring your spouse's ongoing exercise needs?
+
+## Sampling

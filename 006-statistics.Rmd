@@ -1,0 +1,446 @@
+# Statistical Inference {#statistics}
+
+Statistical Inference and Estimation
+Psych 251 - Week 5
+
+[Students define p value, BF, effect size on an index card]
+
+Learning Goals:
+Be able to describe the “NHST” framework
+Reason about the differences between Bayesian and frequentist analyses. 
+Define p value, bayes factor, effect size (key concepts)
+Describe inference vs. estimation approaches
+
+Introduction
+
+The lady tasting tea experiment:
+	Intuitive hypotheses: chance vs. tea knowledge.
+	“Neyman-Pearson” - reject null of chance means accept alternative (knowledge).
+		Side note: what if this were ESP? What would we want to do here? 
+		(Question of prior knowledge)
+
+Discussion question: What do we want to get out of this experiment? 
+	Binary conclusion: context of decision theory? 
+	Estimation of lady’s sensitivity for individual differences?
+
+Back to the lady.
+
+Discussion question: How many cups should she get right out of 12? 
+
+What should we consider:
+	Too low a standard means we are “liberal” – the lady could get lucky
+	Too high a standard means we need the lady to know a lot!
+
+Define decision-theoretic framework:
+
+
+
+
+
+Truth of the hypothesis
+
+
+
+
+TRUE
+FALSE
+Test outcome
+FALSE
+False negative (MISS)
+True negative
+(Correct Rejection)
+TRUE
+False positive 
+(False Alarm)
+True positive
+(HIT)
+
+	
+Bringing back prior knowledge question: how about ESP? 
+	Question: should we as scientists apply such a prior? 
+
+Intuitive solution to the lady tasting tea: given the binomial distribution, how likely is her answer by chance? 
+	Excursion: what’s a probability distribution? A mathematical form to the idea of randomness of a particular type.
+
+If she gets 6, clearly consistent with chance.
+If she gets 7, 19% of exactly 7. 
+But what’s the probability we care about? 7 OR MORE = 38%
+If she gets 8 or more, 19% probability
+9 or more, 7% - ARE YOU CONVINCED? 
+10 or more, 2%
+
+Oh and - how many cups of tea should we taste? 
+	Discussion goal: it depends on how strong we think her tea-tasting sense is!
+
+NHST
+
+A comfortable house built by Neyman, Pearson, Fisher:
+
+One a priori hypothesis
+p(d | h0) < .05
+probability of the these data or more extreme given the null hypothesis of no difference
+NOT probability of an effect!
+P > .05 doesn’t warrant an inference of NO DIFFERENCE
+
+THIS IS A DECISION-THEORETIC TOOLKIT
+
+PROBLEMS - discussion question
+No one interprets P values right!
+Invalidated by lots of data (n -> inf)
+Optional stopping
+Multiple testing
+Focus on binary decisions!
+
+Some people blame NHST for replication crisis.
+
+But these problems can be “patched”?
+
+PRO: very easy toolset, coherent “moves to make”
+NOTE: limited evidence for H1
+
+TRANSITION to different ways of thinking about probability.
+
+QUESTIONS
+
+Bayesian vs. Frequentist
+
+Good handout
+
+Philosophy
+Bayes: Data are the data, what can we infer? (subjective)
+Frequentist: Do the same thing again and again, what happens (objective truth)
+Prior information
+Bayes theorem
+“Data fixed” vs. “model fixed”
+
+Differences in philosophy
+Bayesian stats are good for:
+Cases where you have a lot of prior knowledge
+E.g., statistics for voter prediction in elections
+Cases where you want to deal with uncertainty in a principled way
+E.g., integrating knowledge about measurement error into your model
+Null models
+Cases where you want to decide in favor of null
+(though you can do this in frequentist perspectives)
+Small N data
+Many frequentist tests are based on guarantees in the limit. Guarantees don’t hold at N=3 or 5 or even 10. 
+Frequentist good for:
+Decision theory (cf. bayesian decision theory)
+Absence of assumptions (“more objective”)
+Often easier to state and solve simple models
+Mostly the same
+For simple cases, or with large N
+
+
+—— STOPPING POINT AFTER CLASS ON MONDAY —- 
+
+
+EXPERIMENT and PILOT A
+PROBLEM SET
+
+Review
+How to rule out the null hypothesis of no tea-sensitivity? Compute a p-value, which indicates the probability of the observed data (or any more extreme) under the null hypothesis of no sensitivity.  P < alpha, reject null. 
+P-values “work” to control error rates if used appropriately, but many problems
+Don’t incorporate prior knowledge, e.g. ESP
+Many people reason incorrectly - Goodman 2008
+
+Bayesian approaches provide one alternative
+Philosophical alternative where probability indexes subjective belief, rather than long-run estimates of probability
+
+
+So here’s the issue:
+
+We want the probability of the hypothesis given the data.
+
+p(h | d) = p(d | h1) p(h1)
+	p(d | h1) p(h1) + p(d | h0) p(h0)
+
+P-values only give us the probability of the data given the hypothesis. 
+
+So if H1 is very unlikely, low p-value still doesn’t mean we should change our belief. 
+
+ESP example (Wagenmakers et al. 2011):
+Assume p(h1) is 10x-20:
+ 
+P < .05 provides almost no evidence!
+
+So you need to apply the priors to get the kind of inferences you want. 
+
+
+BF - Bayes Factor
+
+Bayesian Hypothesis Testing - Still “decision-theoretic inference.”
+
+Prior odds = p(h1)
+         p(h0) 
+
+How do you adjust these after seeing the data? 
+
+Comparison of evidence: E1 / E0 : ratio
+
+1/10   1/3      1     3    10
+<- —————————- ->
+
+BF = 	p(h1 | d) 
+p(h0 | d) 
+
+
+Cf. “equivalence testing” in frequentist paradigm: http://daniellakens.blogspot.com/2017/02/rope-and-equivalence-testing.html
+Not actually all that well-used. 
+
+Measure of evidence
+Challenge:
+Specify the models
+Some say this is a good challenge
+
+PRO: specification of nuls, true measure of evidence FOR a claim
+CON: Can be a challenge to specify the models (some say this is a good challenge, though)
+
+BayesFactor packages is really good. 
+
+Can you “p-hack” posteriors? http://datacolada.org/13
+
+NOTE: more conservative on average (wait for our discussion on p < .005 and you’ll see why)
+
+A Taxonomy
+
+
+
+
+Inference
+Estimation
+Frequentist
+NHST
+CIs and ESs
+Bayesian
+Bayes Factors
+Parameter Estimation
+
+
+Inference vs. Estimation
+
+Decision vs. theory building
+I’m going to argue that this is actually the key part of the debate
+
+
+
+Estimation Approaches
+
+
+
+
+Size
+Precision
+Frequentist
+ES
+Confidence Interval
+Bayesian
+Parameter Estimate
+HPD or credible interval
+
+
+
+Frequentist Estimation
+
+Effect sizes (ES):
+Cohen’s = m1 - m2 / SD
+Units of ES easy to compare across studies
+Good for comparison 
+Example: school interventions to improve achievement
+Necessary for meta-analysis
+Example: MA of infant consonant discrimination (cross method comparison)
+Necessary for power analysis 
+Negative: not related to any real units
+Many measures of ES, e.g. r2, n2 (eta), log odds, 
+
+Confidence intervals:
+95% of these regions will contain the TRUE parameter
+	Remember frequentists - there is a TRUE parameter
+
+But this is not our typical interpretation, which is that 95% chance parameter is in this interval
+	That’s the BAYESIAN interpretation
+
+Bayesian Estimation
+
+Find the posterior distribution of the parameter of interest
+	You can take its mean
+	Its HPD (highest posterior density)
+
+Confidence in confidence intervals: 
+https://link.springer.com/article/10.3758/s13423-015-0947-8
+
+
+
+
+https://richarddmorey.shinyapps.io/confidenceFallacy/
+
+
+Conclusions
+
+
+Estimation is more robust that inference
+Bayesian and frequentist methods are not that different for large N
+One framework or the other may offer the particular tool you care about
+But you have to be more 
+
+
+
+
+**Introduction: Teaching Statistical Inference?**
+
+  
+
+How do you reason about the relationship between your data and your hypotheses? [Bayesian inference](https://en.wikipedia.org/wiki/Bayesian_inference) provides a way to make normative inferences under uncertainty. As scientists – or even as rational agents more generally – we are interested in knowing the probability of some hypothesis given the data we observe. As a cognitive scientist I've long been interested in using Bayesian models to describe cognition, and that's what I did much of my graduate training in. These are custom models, sometimes fairly difficult to write down, and they are an area of active research. That's not what I'm talking about in this blogpost. Instead, I want to write about the basic practice of statistics in experimental data analysis.  
+
+  
+
+Mostly when psychologists do and teach "stats," they're talking about frequentist statistical tests. Frequentist statistics are the standard kind people in psych have been using for the last 50+ years: t-tests, ANOVAs, regression models, etc. Anything that produces a p-value. P-values represent the probability of the data (or any more extreme) under the null hypothesis (typically "no difference between groups" or something like that). The problem is that [this is not what we really want to know as scientists](http://psycnet.apa.org/fulltext/1995-12080-001.html). We want the opposite: the probability of the hypothesis given the data, which is what  Bayesian statistics allow you to compute. You can also compute the relative evidence for one hypothesis over another (the Bayes Factor).  
+
+  
+
+Now, the best way to set psychology twitter on fire is to start a holy war about who's actually right about statistical practice, Bayesians or frequentists. There are lots of arguments here, and I see some merit on both sides. That said, there is lots of evidence that [much of our implicit statistical reasoning is Bayesian](http://repository.cmu.edu/psychology/968/). So I tend towards the Bayesian side on the balance <ducks head>. But despite this bias, I've avoided teaching Bayesian stats in my classes. I've felt like, even with their philosophical attractiveness, actually computing Bayesian stats had too many very severe challenges for students. For example, in previous years you might run into major difficulties inferring the parameters of a model that would be trivial under a frequentist approach. I just couldn't bring myself to teach a student a philosophical perspective that – while coherent – wouldn't provide them with an easy toolkit to make sense of their data.  
+
+  
+
+The situation has changed in recent years, however. In particular, the [BayesFactor R package](http://bayesfactorpcl.r-forge.r-project.org/) by Morey and colleagues makes it extremely simple to do basic inferential tasks using Bayesian statistics. This is a huge contribution! Together with [JASP](https://jasp-stats.org/), these tools make the Bayes Factor approach to hypothesis testing much more widely accessible. I'm really impressed by how well these tools work. 
+
+  
+
+All that said, my general approach to statistical inference tends to rely less on inference about a particular hypothesis and more on parameter estimation – following the spirit of folks like [Gelman & Hill (2007)](http://www.stat.columbia.edu/~gelman/arm/) and [Cumming (2014)](http://journals.sagepub.com/doi/abs/10.1177/0956797613504966). The basic idea is to fit a model whose parameters describe substantive hypotheses about the generating sources of the dataset, and then to interpret these parameters based on their magnitude and the precision of the estimate. (If this sounds vague, don't worry – the last section of the post is an example). The key tool for this kind of estimation is not tests like the t-test or the chi-squared. Instead, it's typically some variant of regression, usually mixed effects models. 
+
+  
+
+**Mixed-Effects Models**
+
+Especially in psycholinguistics where our experiments typically show many people many different stimuli, mixed effects models have rapidly become the [de facto standard for data analysis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2613284/). These models (also known as hierarchical linear models) let you estimate sources of random variation ("random effects") in the data across various grouping factors. For example, in a reaction time experiment some participants will be faster or slower (and so all data from those particular individuals will tend to be faster or slower in a correlated way). Similarly, some stimulus items will be faster or slower and so all the data from these groupings will vary. The lme4 package in R was a game-changer for using these models (in a frequentist paradigm) in that it allowed researchers to estimate such models for a full dataset with just a single command. For the past 8-10 years, nearly every paper I've published has had a linear or generalized linear mixed effects model in it. 
+
+  
+
+Despite their simplicity, the biggest problem with mixed effects models (from an educational point of view, especially) has been figuring out how to write consistent model specifications for random effects. Often there are many factors that vary randomly (subjects, items, etc.) and many other factors that are nested within those (e.g., each subject might respond differently to each condition). Thus, it is not trivial to figure out what model to fit, even if fitting the model is just a matter of writing a command. Even in a reaction-time experiment with just items and subjects as random variables, and one condition manipulation, you can write
+
+  
+
+(1) rt ~ condition + (1 | subject) + (1 |  item)
+
+  
+
+for just random intercepts by subject and by item, or you can nest condition (fitting a random slope) for one or both:
+
+  
+
+(2) rt ~ condition + (condition | subject) + (condition |  item)
+
+  
+
+and you can additionally fiddle with covariance between random effects for even more degrees of freedom!
+
+  
+
+Luckily, a number of years ago, a powerful and clear simulation paper by [Barr et al. (2013)](https://www.sciencedirect.com/science/article/pii/S0749596X12001180) came out. They argued that there was a simple solution to the specification issue: use the "maximal" random effects structure supported by the design of the experiment. This meant adding any random slopes that were actually supported by your design (e.g., if condition was a within-subject variable, you could fit condition by subject slopes). While this suggestion was [quite controversial](https://www.sciencedirect.com/science/article/pii/S0749596X16302467),\* Barr et al.'s simulations were persuasive evidence that this suggestion led to conservative inferences. In addition, having a simple guideline to follow eliminated a lot of the worry about analytic flexibility in random effects structure. If you were "keeping it maximal" that meant that you weren't intentionally – or even inadvertently – messing with your model specification to get a particular result. 
+
+  
+
+Unfortunately, a new problem reared its head in lme4: convergence. With very high frequency, when you specify the maximal model, the approximate inference algorithms that search for the maximum likelihood solution for the model will simply not find a satisfactory solution. This outcome can happen even in cases where you have quite a lot of data – in part because the number of parameters being fit is extremely high. In the case above, not counting covariance parameters, we are fitting a slope and an intercept across participants, plus a slope and intercept for _every participant_ and for _every item_. 
+
+  
+
+To deal with this, people have developed various strategies. The first is to do some black magic to try and change the optimization parameters (e.g., following [these helpful tips](https://rstudio-pubs-static.s3.amazonaws.com/33653_57fc7b8e5d484c909b615d8633c01d51.html)). Then you start to prune random effects away until your model is "less maximal" and you get convergence. But these practices mean you're back in flexible-model-adjustment land, and vulnerable to all kinds of charges of post-hoc model tinkering to get the result you want. We've had to specify lab best-practices about the [order for pruning random effects](https://osf.io/zqzsu/wiki/Standard%20Analytic%20Procedures/) – kind of a guide to "tinkering until it works," which seems suboptimal. In sum, the models are great, but the methods for fitting them don't seem to work that well. 
+
+  
+
+Enter Bayesian methods. For several years, it's been possible to fit Bayesian regression models using [Stan](http://mc-stan.org/), a powerful probabilistic programming language that interfaces with R. Stan, building on BUGS before it, has put Bayesian regression within reach for someone who knows how to write these models (and interpret the outputs). But in practice, when you could fit an lmer in one line of code and five seconds, it seemed like a bit of a trial to hew the model by hand out of solid Stan code (which looks a little like C: you have to declare your variable types, etc.). We have done it [sometimes](https://github.com/jasbi/cogsci2017), but typically only for models that you couldn't fit with lme4 (e.g., an ordered logit model). So I still don't teach this set of methods, or advise that students use them by default. 
+
+  
+
+**brms?!? A worked example**
+
+In the last couple of years, the package [brms](https://github.com/paul-buerkner/brms) has been in development. brms is essentially a front-end to Stan, so that you can write R formulas just like with lme4 but fit them with Bayesian inference.* This is a game-changer: all of a sudden we can use the same syntax but fit the model we want to fit! Sure, it takes 2-3 minutes instead of 5 seconds, but the output is clear and interpretable, and we don't have all the specification issues described above. Let me demonstrate. 
+
+  
+
+The dataset I'm working on is an unpublished set of data on kids' pragmatic inference abilities. It's similar to many that I work with. We show children of varying ages a set of images and ask them to choose the one that matches some description, then record if they do so correctly. Typically some trials are control trials where all the child has to do is recognize that the image matches the word, while others are inference trials where they have to reason a little bit about the speaker's intentions to get the right answer. Here are the data from this particular experiment:
+
+  
+
+[![](https://1.bp.blogspot.com/-ExQhkiNxepA/WpTyMltjECI/AAAAAAABwIk/8FoGtOa5vQ8JtD5FGlGhJgn9UE8_CUy4QCLcBGAs/s400/Rplot02.png)](https://1.bp.blogspot.com/-ExQhkiNxepA/WpTyMltjECI/AAAAAAABwIk/8FoGtOa5vQ8JtD5FGlGhJgn9UE8_CUy4QCLcBGAs/s1600/Rplot02.png)
+
+  
+
+I'm interested in quantifying the relationship between participant age and the probability of success in pragmatic inference trials (vs. control trials, for example). My model specification is:
+
+  
+
+(3) correct ~ condition * age + (condition | subject) + (condition | stimulus)
+
+  
+
+So I first fit this with lme4. Predictably, the full desired model doesn't converge, but here are the fixed effect coefficients: 
+
+  
+
+                      beta       stderr  z        p
+
+intercept             0.50 0.19 2.65 0.01
+
+condition             2.13 0.80 2.68 0.01
+
+age                   0.41 0.18 2.35 0.02
+
+condition:age        -0.22 0.36 -0.61 0.54
+
+Now let's prune the random effects until the convergence warning goes away. In the simplified version of the dataset that I'm using here I can keep stimulus and subject intercepts and still get convergence when there are no random slopes. But in the larger dataset, the model won't converge unless i do _just_ the random intercept by subject:
+
+  
+
+                      beta       stderr  z        p
+
+intercept             0.50 0.21 2.37 0.02
+
+condition           1.76 0.33 5.35 0.00
+
+age                   0.41 0.18 2.34 0.02
+
+condition:age        -0.25 0.33 -0.77 0.44
+
+  
+
+Coefficient values are decently different (but the p-values are not changed dramatically in this example, to be fair). More importantly, a number of fairly trivial things matter to whether the model converges. For example, I can get one random slope in if I set the other level of the condition variable to be the intercept, but it doesn't converge with either in this parameterization. And in the full dataset, the model wouldn't converge at all if I didn't center age. And then of course I haven't tweaked the optimizer or messed with the convergence settings for any of these variants. All of this means that there are a _lot_ of decisions about these models that I don't have a principled way to make – and critically, they need to be made conditioned on the data, because I won't be able to tell whether a model will converge _a priori_!
+
+  
+
+So now I switched to the Bayesian version using brms, just writing brm() with the model specification I wanted (3). I had to do a few tweaks: upping the number of iterations (suggested by the warning messages from the output, changing to a Bernoulli model rather than binomial (for efficiency, again suggested by the error message), but this was very straightforward otherwise. For simplicity I've adopted all the default prior choices, but I could have gone more informative.
+
+  
+
+Here's the summary output for the fixed effects:
+
+  
+
+ estimate  error    l-95% CI u-95% CI  
+intercept             0.54      0.48    -0.50     1.69  
+condition             2.78      1.43     0.21     6.19  
+age                   0.45      0.20     0.08     0.85  
+condition:age        -0.14      0.45    -0.98     0.84
+
+  
+
+From this call, we get back coefficient estimates that are somewhat similar to the other models, along with 95% credible interval bounds. Notably, the condition effect is larger (probably corresponding to being able to estimate a more extremal value for the logit based on sparse data), and then the interaction term is smaller but has higher error. Overall, coefficients look more like the first non-convergent maximal model than the second converging one. 
+
+  
+
+The big deal about this model is not that what comes out the other end of the procedure is radically different. It's that it's _not_ different. I got to fit the model I wanted, with a maximal random effects structure, and the process was almost trivially easy. In addition, and as a bonus, the CIs that get spit out are actually credible intervals that we can reason about in a sensible way (as opposed to frequentist confidence intervals, [which are quite confusing](https://link.springer.com/article/10.3758/s13423-015-0947-8) if you think about them deeply enough). 
+
+  
+
+**Conclusion**
+
+Bayesian inference is a powerful and natural way of fitting statistical models to data. The trouble is that, up until recently, you could easily find yourself in a situation where there was a dead-obvious frequentist solution but off-the-shelf Bayesian tools wouldn't work or would generate substantial complexity. That's no longer the case. The existence of tools like BayesFactor and brms means that I'm going to suggest that people in my lab go Bayesian by default in their data analytic practice. 
+
+  
+
+\-\-\-\-  
+_Thanks to Roger Levy for pointing out that model (3) above could include an_ age | stimulus _slope to be truly maximal. I will follow this advice in the paper._  
+
+\* Who would have thought that a paper about statistical models would be called "[the cave of shadows](https://www.sciencedirect.com/science/article/pii/S0749596X16302467)"?
+
+\*\* [Rstanarm](http://mc-stan.org/users/interfaces/rstanarm) did this also, but it covered fewer model specifications and so wasn't as helpful.

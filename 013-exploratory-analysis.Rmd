@@ -1,0 +1,155 @@
+# Exploratory Analysis {#exploratoryanalysis}
+
+
+## Model-based Exploration
+
+## Visualization
+
+
+Should we outlaw the the commonest visualization in psychology? The hashtag [#barbarplots](https://twitter.com/search?q=%23barbarplots&src=typd) has been introduced as part of a [systematic campaign](https://barbarplots.github.io/) to promote a ban on bar graphs. The argument is simple: barplots mask the distributional form of the data, and all sorts of other visualization forms exist that are more flexible and precise, including boxplots, violin plots, and scatter plots. All of these show the distributional characteristics of a dataset more effectively than a bar plot.  
+  
+Every time the issue gets discussed on twitter, I get a little bit rant-y; this post is my attempt to explain why. It's not because I fundamentally disagree with the argument. Barplots do mask important distributional facts about datasets. But there's more we have to take into account.  
+  
+  
+  
+Here's my basic argument:  
+
+> Hey [#barbarplots](https://twitter.com/hashtag/barbarplots?src=hash) folks: I agree with you that plotting variability is important, but the world of data is big! /1
+> 
+> — Michael C. Frank (@mcxfrank) [August 10, 2016](https://twitter.com/mcxfrank/status/763321341651156992)
+
+  
+
+> Sometimes you need a summary stat because you have lots of observations, sometimes because there are many conditions to compare. /2
+> 
+> — Michael C. Frank (@mcxfrank) [August 10, 2016](https://twitter.com/mcxfrank/status/763321686343254018)
+
+  
+
+> Bars are overused when neither of those apply; they shouldn't always be the default. Lines and points are usually cleaner. /3
+> 
+> — Michael C. Frank (@mcxfrank) [August 10, 2016](https://twitter.com/mcxfrank/status/763322006788005888)
+
+  
+
+> ANOVA also overused and used inappropriately - would be silly to ban it. Same for bars. Move the defaults and [#barwithcaution](https://twitter.com/hashtag/barwithcaution?src=hash). /end
+> 
+> — Michael C. Frank (@mcxfrank) [August 10, 2016](https://twitter.com/mcxfrank/status/763322993103794176)
+
+When I originally posted that rant, I was in transit and didn't get a chance to illustrate my point, so there was a lot of back-and-forth about what good use cases for bars would be.* The basic one that comes to mind for me is in analyzing datasets where there are many discrete independent variables (e.g., conditions, experiments) and not many observations per participant. This structure describes many experiments I've worked on.  
+  
+I put together an example visualization, based on Experiment 4 of [this paper](http://langcog.stanford.edu/papers/FG-cogpsych2014.pdf). All code and data [here](https://github.com/mcfrank/info_kid), in the experiment 4 analysis script. Here's the plot we put in the paper:  
+  
+
+[![](https://2.bp.blogspot.com/-w-gjs1IGRCg/WBzSybH9kEI/AAAAAAAA3sE/RX1pHnfFoYwZ6FgwDL-9U_HVI_2Gmqv7gCLcB/s400/bar.png)](https://2.bp.blogspot.com/-w-gjs1IGRCg/WBzSybH9kEI/AAAAAAAA3sE/RX1pHnfFoYwZ6FgwDL-9U_HVI_2Gmqv7gCLcB/s1600/bar.png)
+
+  
+
+I chose a barplot because there were a lot of planned age groups and conditions and it seemed like an easy way to represent that discrete structure in the data, along with summary means and 95% CIs. I like to visualize by-subject distributions (I was actually a bit fetishistic about it in my early papers), but the data I was plotting here had only four observations per child. As a result, simple jitter plots look crazy:
+
+  
+
+[![](https://3.bp.blogspot.com/-TNaRrY4SaWs/WBzVGR0neVI/AAAAAAAA3sU/OR6B5nrnukcZjzdFiwiMYZ3C3kBZCTgHgCLcB/s400/all_data.png)](https://3.bp.blogspot.com/-TNaRrY4SaWs/WBzVGR0neVI/AAAAAAAA3sU/OR6B5nrnukcZjzdFiwiMYZ3C3kBZCTgHgCLcB/s1600/all_data.png)
+
+  
+
+And box plots are useless. 
+
+  
+
+[![](https://1.bp.blogspot.com/-bF0Bm0MHDr0/WBzSyTa6jjI/AAAAAAAA3sI/iFP1jJrbGyYfequCf0-frx45bpeFUMZ8QCLcB/s400/boxes.png)](https://1.bp.blogspot.com/-bF0Bm0MHDr0/WBzSyTa6jjI/AAAAAAAA3sI/iFP1jJrbGyYfequCf0-frx45bpeFUMZ8QCLcB/s1600/boxes.png)
+
+  
+
+Violin plots are useless too. 
+
+  
+
+[![](https://4.bp.blogspot.com/-WVsc-vbXn24/WBzVV2hmLWI/AAAAAAAA3sc/kAKaHY2aal8wn8_1jBbG_BwkEbrS0lCewCLcB/s400/violin.png)](https://4.bp.blogspot.com/-WVsc-vbXn24/WBzVV2hmLWI/AAAAAAAA3sc/kAKaHY2aal8wn8_1jBbG_BwkEbrS0lCewCLcB/s1600/violin.png)
+
+The best alternative I saw was this one, but it still looks too sparse to me:
+
+  
+
+[![](https://1.bp.blogspot.com/-XxAmZl6sEKE/WBzSyRCnfkI/AAAAAAAA3sA/z9G_vFYtVDEqt1UM9_2QARUaJrmNhWQ6wCLcB/s400/point.png)](https://1.bp.blogspot.com/-XxAmZl6sEKE/WBzSyRCnfkI/AAAAAAAA3sA/z9G_vFYtVDEqt1UM9_2QARUaJrmNhWQ6wCLcB/s1600/point.png)[  
+](https://1.bp.blogspot.com/-XxAmZl6sEKE/WBzSyRCnfkI/AAAAAAAA3sA/z9G_vFYtVDEqt1UM9_2QARUaJrmNhWQ6wCLcB/s1600/point.png)
+
+Having posted these to twitter along with the data, TJ Mahr rose to the challenge to do better:
+
+> [@annemscheel](https://twitter.com/annemscheel) [@mcxfrank](https://twitter.com/mcxfrank) hmmm didn't realize only 4 trials per cell. not much y variability to be revealed by points. [pic.twitter.com/bLaRixZV4q](https://t.co/bLaRixZV4q)
+> 
+> — tj mahr (@tjmahr) [November 4, 2016](https://twitter.com/tjmahr/status/794589009611788288)
+
+I like this representation, and with some tweaking it might be a nice alternative to put in a paper like the one I wrote.
+
+  
+
+But here's my point: these visualizations are good for different things. The barplot is simple and easy to read – and it compresses well. (This point is made by [Heer & Bostock, 2010](http://vis.stanford.edu/files/2010-MTurk-CHI.pdf), as well). Consider what happens when we shrink the plotting space for these (using my version of TJ's so I can hold image size constant):
+
+  
+
+[![](https://2.bp.blogspot.com/-rQ1nib7-1Yg/WBzWZGjd55I/AAAAAAAA3sk/sLa8iTVURdIugwg2zQALkZpoQ80OEkhSgCLcB/s320/bar_small.png)](https://2.bp.blogspot.com/-rQ1nib7-1Yg/WBzWZGjd55I/AAAAAAAA3sk/sLa8iTVURdIugwg2zQALkZpoQ80OEkhSgCLcB/s1600/bar_small.png)
+
+  
+
+[![](https://2.bp.blogspot.com/-nSZGTGkrjhk/WBzWZAIAhkI/AAAAAAAA3sg/hBgdh1BP4CQXv0_Bok_6prEg5srI_i-DQCLcB/s320/jitterdodge_small.png)](https://2.bp.blogspot.com/-nSZGTGkrjhk/WBzWZAIAhkI/AAAAAAAA3sg/hBgdh1BP4CQXv0_Bok_6prEg5srI_i-DQCLcB/s1600/jitterdodge_small.png)
+
+Or even tinier:
+
+  
+
+[  
+![](https://2.bp.blogspot.com/-rQ1nib7-1Yg/WBzWZGjd55I/AAAAAAAA3sk/sLa8iTVURdIugwg2zQALkZpoQ80OEkhSgCLcB/s200/bar_small.png)](https://2.bp.blogspot.com/-rQ1nib7-1Yg/WBzWZGjd55I/AAAAAAAA3sk/sLa8iTVURdIugwg2zQALkZpoQ80OEkhSgCLcB/s1600/bar_small.png)
+
+  
+
+[![](https://2.bp.blogspot.com/-nSZGTGkrjhk/WBzWZAIAhkI/AAAAAAAA3sg/hBgdh1BP4CQXv0_Bok_6prEg5srI_i-DQCLcB/s200/jitterdodge_small.png)](https://2.bp.blogspot.com/-nSZGTGkrjhk/WBzWZAIAhkI/AAAAAAAA3sg/hBgdh1BP4CQXv0_Bok_6prEg5srI_i-DQCLcB/s1600/jitterdodge_small.png)
+
+My sense is that the barplot holds up to compression much better, at least modulo the font size. In addition, I would never show the jitterdodge masterwork to a popular audience (or even really to a class). It's just got too much going on. 
+
+  
+
+My broader point: banning particular data analyses or visualizations just doesn't seem like the right answer. Particular visualizations can be right for certain contexts, for certain audiences, and for certain data types. The world of data is broad. We can change the defaults, but we shouldn't ban something that has important uses. 
+
+
+\* Everyone in the discussion agrees that bars are fine for visualizing single discrete values, e.g. as in the counts in a histogram.
+
+## Fixing the Axis Labels
+
+
+I've waited a long time for an experiment to finish and I eagerly sit down to begin my analysis. I've got a graph in mind that shows the relationship between the measure of interest and the key manipulations. I code frantically until I get the first look at the plot and then slump back onto the couch in disgust, because it doesn't look like what I imagined. 
+
+  
+This scenario has happened to me more times than I can count, and it's one of the formative experiences of doing experimental science. If you always see the pattern of data you expect, you're doing something wrong. The question is what to do next.  
+  
+When I teach data analysis, I focus on visualization and exploration rather than statistics. You have to become familiar enough with whatever graphics package you use (R, matlab, excel, etc.) that you can quickly make and alter many different visualizations of your data. But once you gain that kind of facility it becomes tempting to throw off dozens of different graphs. After seeing that first failure, the next obvious move is to try all kinds of fancy new analyses. Add a factor to the graph. Break it up by items or by subjects. Try difference scores. Make it 3D!  
+  
+These are all important things to do - and even more important things to _be able to do_.  (Well, maybe not the 3D part.) If, for example, you can't quickly do a visual [subject or item analysis](http://stats.stackexchange.com/questions/37850/when-subject-based-analysis-is-better-than-answer-based-and-vice-versa), then you may miss crucial issues in your design. But I also want to argue that the immediate move to more complex or more in-depth analyses may lead to post-hoc analyses, where you find results that you didn't predict. From there, it's very tempting to interpret these findings [as though they are the planned analysis](http://dbem.ws/WritingArticle.pdf). Problems of this sort [have](http://pps.sagepub.com/content/7/6/528.short) [been](http://www.dailygrail.com/Mind-Mysteries/2012/8/Not-Feeling-the-Future-New-Bem-Replication-Fails-Find-Evidence-Psi) [discussed](http://openscienceframework.org/) [intensely](http://people.psych.cornell.edu/~jec7/pcd%20pubs/simmonsetal11.pdf) in recent years.  
+  
+That first graph you made is important (or it should be, if you've chosen the correct starting place). That graph should be the planned analysis - the one that you wanted to do to test your initial hypothesis. So instead of poking around the dataset to see if something else turns up, what I try to do is something I call _fixing the axis labels_. (I use this as a shorthand for "cleaning up all the seemingly unimportant details"). Fixing the axis labels is an important way to get as much information as possible from your planned analysis.  
+  
+When fixing the axis labels, take the time to walk through the graph slowly:  
+
+*   Label the axes appropriately, with descriptive names,
+*   Make sure the scale make sense, adding units wherever possible,
+*   Correct the ticks on the axes so that they are sensible in terms of placement and precision,
+*   Fix the aspect ratio of the graph so that the [measures are scaled appropriately](http://www.performance-ideas.com/2012/03/22/chart-aspect-ratio/), 
+*   Make sure there are appropriate measures of variability, ideally 95% confidence intervals so you can do [inference by eye](http://psychweb.psy.umt.edu/denis/datadecision/front/stat_II_2011/error_bars.pdf), and
+*   Make sure that the appropriate reference lines are visible, e.g. a line indicating chance performance or a baseline from a control task.
+
+You can see an example of this cleanup in the frontispiece image above, a simplified plot from [a project](http://langcog.stanford.edu/papers/SGF-cogsci2011.pdf) I worked on a couple of years ago. Although I try to avoid bar graphs in most of my work, I've chosen one here because even in this very simple visualization it's possible to add a lot of extra important detail that helps any viewer (including me!) interpret the data.
+
+  
+
+Some or all of this may seem obvious. Yet it is astonishing to me how many students and collaborators move on from that first graph before perfecting it. (This move often stems from anxiety that my experiment has failed - prompting a search for new analyses that "worked," often exactly the wrong move.) And while sometimes fixing the axis labels simply makes a clear failure clearer, other times it can reveal important insights about the data:
+
+*   Axes. Does the relationship being plotted really make sense with respect to the design of the experiment? Can you describe the axes in terms of what was manipulated (typically horizontal) and what was measured (typically vertical)? If not, then you need a different plot.
+*   Scale and aspect ratio. Is the measurement magnitude appropriate and sensible? You can only see this if the scale is right and the aspect ratio is appropriate. But this simple check of magnitudes is an important way to catch errors. (I made [this error](http://langcog.stanford.edu/papers/FSMJ-devsci-erratum.pdf) in [one of my first papers](http://langcog.stanford.edu/papers/FSMJ-devsci2009.pdf), where I plotted minima rather than means and failed to notice that infant looking times were a full order of magnitude smaller than they should have been. Not my finest hour.)
+*   Ticks and reference marks. Does the approximate level of participants' performance make sense? How does it compare to known baselines like chance or performance in earlier studies?
+*   Variability. Is the variability sensible? Does it vary across conditions or populations? Is the precision of the measurements sufficient to allow for the inferences you want? Often the appropriate variability measure is all you need to make a strong argument from the statistical data on a graph. The later statistical analyses may confirm and quantify the impression of reliability from the visualization, but they become much less critical. 
+
+Of course it's important to do many different exploratory visualizations. But before moving on to these secondary hypotheses, take the time to make the best representation you can of the primary, planned analysis. Make the graph as clean and clear as possible, so you can walk a friend or collaborator through it and see the nature of the measurements you've made. 
+
+  
+
+(HT: lots of these recommendations are inspired by the work of [Andrew Gelman](http://andrewgelman.com/) and colleagues, e.g. [this](http://www.stat.columbia.edu/~gelman/research/published/dodhia.pdf).)

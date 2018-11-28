@@ -1,0 +1,561 @@
+# Sharing Reproducible Reports {#sharing}
+
+
+How often are there statistical reporting errors in published research? Using a new [automated method](http://mbnuijten.com/statcheck/) for scraping APA-formatted stats out of PDFs, [Nuijten et al. (2015)](https://mbnuijten.files.wordpress.com/2013/01/nuijtenetal_2015_reportingerrorspsychology1.pdf) found that over 10% of p-values were inconsistent with the reported details of the statistical test, and 1.6% were what they called "grossly" inconsistent, e.g. difference between the p-value and the test statistic meant that one implied statistical significance and the other did not (another summary [here](http://www.nature.com/news/smart-software-spots-statistical-errors-in-psychology-papers-1.18657)). Here are two key figures, first for proportion inconsistent by article and then for proportion of articles with an inconsistency:  
+  
+
+[![](https://2.bp.blogspot.com/-RRD39_7v9_w/VkAeliwu5PI/AAAAAAAADFI/2vwZxK6__uE/s200/Screen%2BShot%2B2015-11-08%2Bat%2B8.18.16%2BPM.png)](http://2.bp.blogspot.com/-RRD39_7v9_w/VkAeliwu5PI/AAAAAAAADFI/2vwZxK6__uE/s1600/Screen%2BShot%2B2015-11-08%2Bat%2B8.18.16%2BPM.png)[![](https://4.bp.blogspot.com/-tZ8dzLJg-6c/Vj_KyGSNCVI/AAAAAAAADE0/IVJhkDZd_nQ/s200/Screen%2BShot%2B2015-11-08%2Bat%2B2.19.36%2BPM.png)](http://4.bp.blogspot.com/-tZ8dzLJg-6c/Vj_KyGSNCVI/AAAAAAAADE0/IVJhkDZd_nQ/s1600/Screen%2BShot%2B2015-11-08%2Bat%2B2.19.36%2BPM.png)
+
+  
+These graphs are upsetting news. Around half of articles had at least one error by this analysis, which is not what you want from your scientific literature.* Daniel Lakens has a [nice post](http://daniellakens.blogspot.nl/2015/10/checking-your-stats-and-some-errors-we.html) suggesting that three errors account for many of the problems: incorrect use of < instead of =, use of one-sided tests without clear reporting as such, and errors in rounding and reporting.  
+
+  
+Speaking for myself, I'm sure that some of my articles have errors of this type, almost certainly from copying and pasting results from an analysis window into a manuscript (say Matlab in the old days or R now).**  The copy-paste thing is _incredibly_ annoying. I hate this kind of slow, error-prone, non-automatable process.  
+  
+So what are we supposed to do? Of course, we can and should just check our numbers, and maybe run statcheck (the R package Nuijten et al. created) on our own work as well. But there is a much better technical solution out there: write statistics into the manuscript in one executable package that automatically generates the figures, tables, and statistical results. In my opinion, doing this used to be almost as much of a pain as doing the cutting and pasting (and this is spoken as someone who writes academic papers in LaTeX!). But now the tools for writing text and code together have gotten so good that I think there's no excuse not to. 
+
+  
+  
+In particular, the integration of the [knitr](http://yihui.name/knitr/) package with [RStudio](https://www.rstudio.com/products/rstudio/download/) and [RPubs](http://rpubs.com/) means that it is essentially trivial to create a well-formatted document that includes text, code, and data inside it. [I've posted a minimal working example to RPubs](http://rpubs.com/mcfrank/rmd_mwe); you can see the source code [here](https://gist.github.com/mcfrank/6b999327cb7d9d12694d). Critically, this functionality allows you to do things like this:  
+  
+
+[![](https://1.bp.blogspot.com/-URcTmPCmW4A/VlY-xK8q0XI/AAAAAAAADHw/O0EYnIRy2hg/s400/Screen%2BShot%2B2015-11-25%2Bat%2B3.04.48%2BPM.png)](http://1.bp.blogspot.com/-URcTmPCmW4A/VlY-xK8q0XI/AAAAAAAADHw/O0EYnIRy2hg/s1600/Screen%2BShot%2B2015-11-25%2Bat%2B3.04.48%2BPM.png)
+
+  
+  
+  
+  
+  
+which eliminates the cut and paste step.*** And even more importantly, you can get out fully-formatted results tables:  
+  
+
+[![](https://1.bp.blogspot.com/-SJOWt3BQdkc/VlY-xDL0eLI/AAAAAAAADH8/xajGxgLwawU/s400/Screen%2BShot%2B2015-11-25%2Bat%2B3.04.54%2BPM.png)](http://1.bp.blogspot.com/-SJOWt3BQdkc/VlY-xDL0eLI/AAAAAAAADH8/xajGxgLwawU/s1600/Screen%2BShot%2B2015-11-25%2Bat%2B3.04.54%2BPM.png)
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+You can even use bibtex for references (shown in the full example). Kyle MacDonald, Dan Yurovsky, and I recently [wrote a paper](http://langcog.stanford.edu/papers_new/macdonald-2015-underrev.pdf) together on the role of social cues in cross-situational word learning (the manuscript is under review at the moment). Kyle did the entire thing in RMarkdown using this workflow ([repository here](https://github.com/kemacdonald/soc_xsit)), and then did journal formatting using a knitr style that [he bundled into his own R package](https://github.com/kemacdonald/kmr).  
+  
+The RStudio knitr integration is such that it's really trivial to get started using this workflow ([here's a good initial guide](http://shiny.rstudio.com/articles/rmarkdown.html)), and it's pretty interactive to re-knit and see the output. Occasionally debugging is still a bit tricky, but you can easily switch back to the [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) to debug more complex code blocks. Perhaps the strongest evidence about how easy it is to work this way. More and more I've found myself turning to this workflow as the starting point of data analysis, rather as a separate packaging step at the end of a project.  
+  
+Often we tend to think of there being a tension between the principles of open science and the researcher's own incentive to work quickly. In contrast, this is a case where I think that there is no tension at all: a better, easier, and faster workflow leads to both a lower risk of errors and more transparency.  
+  
+\-\-\-  
+\* There are some potential issues in the automated extraction procedure that Nuijten et al. used. In particular, they have a very inflexible schema for reporting: if authors included an effect size,  formatted their statistical results in a single parenthetical, or any other common formatting alternative, the package would not extract the appropriate stat (in practice, they get around 68% of tests). This kind of thing would be easy to improve on using modern machine reading packages (e.g., I'm thinking of [DeepDive](http://deepdive.stanford.edu/)'s extractors). But they also report a validation study in the Appendix that looks pretty good, so I'm not hugely worried about this aspect of the work.  
+  
+\*\*  Actually, I doubt the statcheck package that Nuijten et al. used would find many of my stats at all, though: at this point, I do relatively few t-tests, chi-squareds, or ANOVAs. Instead I prefer to use regression or other models to try and describe the set of quantitative trends across an entire dataset – more like the approach that [Andrew Gelman has advocated for](http://www.stat.columbia.edu/~gelman/research/published/multiple2f.pdf).  
+
+  
+\*\*\* You can of course still make coding errors here. But that was true before. You just don't have to copy and paste the output of your error into a separate window. 
+
+  
+[![ResearchBlogging.org](http://www.researchblogging.org/public/citation_icons/rb2_large_gray.png)](http://www.researchblogging.org/)Nuijten MB, Hartgerink CH, van Assen MA, Epskamp S, & Wicherts JM (2015). The prevalence of statistical reporting errors in psychology (1985-2013). Behavior Research Methods. PMID: [26497820](http://www.ncbi.nlm.nih.gov/pubmed/26497820)
+
+**tl;dr**: Using git+R is good for reproducible research. If you already knew that, then you won't learn a lot here.  
+  
+I just read Dorothy Bishop's new post, [Data analysis: Ten tips I wish I'd known sooner](http://deevybee.blogspot.co.uk/2014/04/data-analysis-ten-tips-i-wish-id-known.html). I really like her clear, commonsense recommendations and agree with just about all of them. But in the last couple of years, I've become convinced that even for the less technically-minded student (let alone for the sophisticated researcher), the spirit of many of her tips can be implemented using open tools like [git](http://git-scm.com/) and [R](http://www.r-project.org/). As a side benefit, many of the recommendations are a natural part of the workflow in these tools, rather than requiring extra effort.  
+  
+My goal in this post is to explain how this ecosystem works, and why it (more or less) does the right thing. I also want to show you why I think it's a pretty good tradeoff between learning time and value added. Of course, you can get even more reproducible, managing your project on the [Open Science Framework](https://osf.io/) (and using their git support), and use [sweave](http://www.stat.uni-muenchen.de/~leisch/Sweave/) and [LaTeX](http://www.latex-project.org/) to typeset exactly the same code you've written. These are all great things. But for many people, starting out with such a complex, interlocking set of tools can be quite daunting. I'd like to think the git+R setup that we use strikes a good balance.  
+  
+Bishop's recommendations implicitly address several major failure modes for data analysis:  
+
+1.  Not being able to figure out what set of steps you did, 
+2.  Not being able to figure out what those steps actually accomplished, and
+3.  Not being able to reconstruct the dataset you did them to.
+
+These are problems in the reproducibility of your analysis, and as such, pose major risks to basic science you're trying to do. The recommendations that address these issues are very sensible: keep track of what you did (recs 8 and 9), label and catalogue your variables in a semantically transparent way (recs 2 and 4), archive and back up your data (recs 5 and 6). Here's how I accomplish this in git+R.  
+  
+
+### Writing analyses in R as a keystone of reproducible analysis
+
+Bishop's recommendations focus on the importance of keeping a log of analyses. This is the classic best-practices approach in bench science: keep a lab notebook! Although I don't think you can go wrong with this approach, it has a couple of negatives. First, it requires a lot of discipline. If you get excited and start doing analyses, you have to stop yourself and remember to document them fully. Second, keeping a paper lab notebook means going back and forth between computer and notebook all the time (and having to work on analyses only when you have a notebook with you). On the other hand, using an electronic notebook can mean you run into major formatting difficulties in including code, data, images, etc.  
+  
+These problems have been solved very nicely by [iPython](http://ipython.org/), an interactive notebook that allows the inclusion of data, code, images, and text in a single flexible format.  I suspect that once this approach is truly mature and can be used across languages, interactive notebooks are what we all should be using. But I am not yet convinced that we should be writing python code to analyze our data yet – and I definitely don't think we should start students out this way. Python is a general-purpose language (and [a much better one than R](http://tim-smith.us/arrgh/index.html)) but the idioms of data analysis are not yet as codified or as accessible in it, even though they are improving rapidly.  
+  
+In the mean time, I think the easiest way for students to learn to do reproducible data analysis is to write well-commented R scripts. These scripts can simply be executed to produce the desired analyses. (There is of course scripting functionality in SPSS as well, but the combination of clicking and scripting can be devastating to reproducibility: the script gives the impression of reproducibility while potentially depending on some extra ad-hoc clicks that are not documented).  
+  
+The reasons why I think R is a better data analysis language for students to learn than python are largely due to [Hadley Wickham](http://had.co.nz/), who has done more than anyone else to rationalize R analysis. In particular, a good, easy-to-read analysis will typically only have a few steps: read in the data, aggregate the data across some units (often taking means across conditions and subjects), plot this aggregated data, and apply a statistical model to characterize patterns seen in the plots. In the R ecosystem, each of these can be executed in only one or at most a few lines of code.  
+  
+Here's an example from [a repository I've been working on](https://github.com/langcog/disc_wl) with Ali Horowitz, a graduate student in my lab. This is an experiment on children's use of discourse information to learn the meanings of words. Children across ages choose which toy (side) they think a word refers to, in conditions with and without discourse continuity information. The [key analysis script](https://github.com/langcog/disc_wl/blob/master/analysis/Continuity_kids_and_adults_analyses.R) does most of its work in four chunks:  
+  
+\#### 1\. read in data  
+
+d <- read.csv("data/all_data.csv") 
+
+  
+
+##\## 2. aggregate for each subject and then across subjects
+
+mss <- aggregate(side ~ subid + agegroup + corr.side + condition, 
+
+                 data = d, mean)
+
+ms <- aggregate(side ~ agegroup + corr.side + condition, 
+
+                data = mss, mean)
+
+  
+
+##\## 3. plot
+
+qplot(agegroup, side, colour = corr.side, 
+
+      facets = .~condition,  
+
+      group = corr.side, 
+
+      geom = "line", 
+
+      data = ms)
+
+  
+##\## 4. linear mixed-effects model
+
+lm.all <- glmer(side ~ condition * corr.side * age + 
+
+                (corr.side | subid), 
+
+                data = kids, family = "binomial")  
+  
+This is simplified somewhat – I've left out the confidence intervals and a few pieces of data cleaning – but the overall schema is one that reappears over and over again in my analyses. Because this idiom for expressing data analysis is so terse (but still so flexible), I find it extremely easy to debug. In addition, if the columns of your original datasheet are semantically transparent (e.g. agegroup, condition, etc.), your expressions are very easy to read and interpret. (R's factor data structure helps with this too, by keeping track of different categorical variables in your data). Overall, there is very little going on that is not stated in the key formula expressions in the calls to aggregate, qplot, and glmer; this in turn means that good naming practices make it easy to interpret the code in terms of the underlying design of the experiment you ran. It's much easier to debug this kind of code than your typical matlab data analysis script, where rows and columns are often referred to numerically (e.g. plot(d(:,2), d(:,3)) rather than qplot(condition, correct, data=d)). 
+
+  
+
+Often the data you collect are not in the proper form to facilitate this kind of analysis workflow. In that case, my choice is to create another script, called something like "preprocessing.R" that uses tools like [reshape2](http://cran.r-project.org/web/packages/reshape2/index.html) to move from e.g. a mechanical turk output file to a [tidy data](http://vita.had.co.nz/papers/tidy-data.pdf) format (a long-form tabular dataset). That way I have a two-step workflow, but I am saving both the original data and the intermediate datafile, and can easily check each by eye in a text editor or Excel for conversion/reformatting errors. 
+
+  
+
+Overall, the key thing about using R for the full analysis is that – especially when the analysis is version controlled, as described below – you have a full record of the steps that you took to get to a particular conclusion. In addition, with the general workflow described above, the steps in the analysis are described in a semantically transparent way (modulo understanding the particular conventions of, say, ggplot2, which can take some time). Both of these dramatically improve reproducibility by making debugging, rerunning, and updating this codebase easier. 
+
+  
+
+### Archiving analyses on git
+
+When I am ready to analyze the data from an experiment (or sometimes even before), I have started setting up a git repository on [github.com](http://github.com/). It took me a little while to get the hang of this practice, but now I am convinced that it is overall a huge time-saver. (A good tutorial is available [here](http://nyuccl.org/pages/GitTutorial/)). The repository for an experimental project is initialized with the original datafile(s) that I collect, e.g. the eye-tracking records, behavioral testing software outputs, or logfiles, suitably anonymized. These source datafiles should remain unchanged throughout the lifetime of the analysis – confirmed by their git history.  
+  
+I work on a local copy of that repository and push updates back to it so that I always have the analysis backed up. (I've begun doing all my analysis in the clear on github, but for academic users you can get [free private repositories](https://education.github.com/discount_requests/new) if that makes you uncomfortable). This strategy helps me keep track of the original data files, intermediate processed and aggregated data, and the analysis code, all in one place. So at its most basic it's a very good backup.  
+  
+But managing data analysis through git has a couple of other virtues, too:  
+
+*   _The primary benefits of version control._ This is the obvious stuff for anyone who has worked with git or subversion before, but for me as a new user, this was amazing! Good committing practices – checking in versions of your code regularly – mean that you never have to have more than one version of a file. For example, if you're working on a file called "analysis.R," you don't have to have "analysis 4-21-14 doesn't quite work.R" and "analysis 4-22-14 final.R." Instead, "analysis.R" can reflect in its git history many different iterations that you can browse through whenever you want. You can even use [branches](http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging) or [tags](http://git-scm.com/book/en/Git-Basics-Tagging) to keep track of multiple different conflicting approaches in the same file. 
+*   _Transparency within collaborations._ Your collaborators can look at what you are doing while the analysis is ongoing, and they can even make changes and poke around without upsetting the applecart or creating totally incommensurable analysis drafts. This transparency can dramatically reduce sharing overhead and crosstalk between collaborators in a large project. It also means that it is way easier for authors to audit the analysis on a paper prior to submission – something that I think should probably be mandatory for complex analyses. 
+*   _Ease of sharing analyses during the publication and review process_. When you're done – or even while analysis is still ongoing – you can share the repository with outsiders or link to it in your publications. Then, you can post updates to it if you have corrections or extensions, and new viewers will automatically see these rather than having to track you down. This means sharing your data and analysis is always as simple as sharing a link – no need to hunt down a lot of extra dependencies and clean things up after the fact (something that I suspect is a real reason why [many data sharing requests go unanswered](http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0007078#pone-0007078-g001)).
+
+The open git analysis approach is not perfect for all datasets – the examples that come to mind are confidential data that cannot easily be anonymized (e.g. transcripts with lots of identifying information) and neuroimaging, where the data are too large to push back and forth to external repositories all the time. But for a wide range of projects, this can be a major win.  
+  
+
+### Conclusion
+
+It takes an initial, upfront investment to master both git and R. Neither is as easy as using pivot tables in Excel. But the payoff is dramatic, both in terms of productivity and in terms of reproducibility. There are steps further that you can take if you are really committed to documenting every step of your work, but I think this is a reasonable starting point, even for honors students or beginning graduate students. For any project longer than a quick one-off, I am convinced that the investment is well worth while.  
+  
+Of course, I don't mean to imply that you can't do bad or irreproducible research using this ecosystem – it's very easy to do both. But I do believe that it nudges you towards substantially better practices than tools like Excel and SPSS. And sometimes [a nudge in the right direction can go a long way](http://en.wikipedia.org/wiki/Nudge_(book)) towards promoting the desired behavior.
+
+## Version Control 
+
+It's coming up on conference paper season, specifically for the [Cognitive Science Conference](http://cognitivesciencesociety.org/conference_next.html). I love how deadlines like CogSci push research forward, giving us an intermediate goal to shoot for. But when lots of folks in the lab are writing papers separately, keeping track of all the drafts can get unwieldy very fast. My resolution this year is that no one will send me any more zip files of a directory called "CogSciPaperFinal." File naming practices like this one have been [caricatured before](http://www.phdcomics.com/comics/archive.php?comicid=1323),\* but they get even worse when I'm constantly trying to track something like 6 - 8 different papers going forward at the same time.  
+  
+Towards that end, our last lab meeting of the quarter was on [version control](http://en.wikipedia.org/wiki/Revision_control) software. In a nutshell, version control packages allow individuals and collaborative groups to work together on a project (usually a software codebase) and provide tools for keeping track of and merging changes to the project. It's painfully clear that we're late to the party: virtually no one in industry works on a large project without version control, but, as is frequently noted, scientists are [not good software engineers](http://software-carpentry.org/).  
+  
+We are starting a lab-wide push to keeping track of all of our writing and code using [git](http://git-scm.com/) and [github](http://github.com/). This transition will mean a bit of discomfort – hopefully not pain – but it's a far better method for storing our work and sharing it with collaborators. If you haven't played with git, I recommend looking at [this nice tutorial](http://nyuccl.org/pages/GitTutorial/) by NYU's [John McDonnell](http://jvmcd.nl/). I also found it very useful to do the [TryGit tutorial](http://try.github.io/levels/1/challenges/1). The lab's (currently very empty) github page is [here](https://github.com/langcog). Hopefully in a couple of months it'll be substantially fuller...  
+  
+
+
+[Adapted from work with Chris Hartgerink](https://github.com/libscie/rmarkdown-workshop)
+
+## Intro
+
+This document is a short tutorial on using RMarkdown to mix prose and code together for creating reproducible scientific documents.^[There is also a slidedeck that goes along with this handout available **[here](https://libscie.github.io/rmarkdown-workshop)**, which is worth looking at if you don't know what you're doing on this page and what to look at. Going through this document takes at most two hours, assuming you already know some basic `R` programming. If you find any errors and have a Github account, **[please suggest changes here](https://github.com/libscie/rmarkdown-workshop/edit/master/handout.Rmd)**. All **[content](https://github.com/libscie/rmarkdown-workshop)** is CC 0 licensed, so feel free to remix and reuse!]
+
+The tutorial is based on documents that both Chris and Mike wrote independently (see [here](https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown) and [here](http://babieslearninglanguage.blogspot.com/2015/11/preventing-statistical-reporting-errors.html) if you're interested). In short: RMarkdown allows you to create documents that are compiled with code, producing your next scientific paper.^[Note: this is also possible for Python and other open-source data analysis languages, but we focus on R.]
+
+Now we're together trying to help spread the word, because it can make writing manuscripts so much easier! We wrote this handout in RMarkdown as well (looks really sweet, no?).
+
+### Who is this aimed at?
+
+We aim this document at anyone writing manuscripts and using R, including those who...
+
+1. ...collaborate with people who use Word
+2. ...want to write complex equations
+3. ...want to be able to change bibliography styles with less hassle
+4. ...want to spend more time actually doing research!
+
+### Why write reproducible papers?
+
+Cool, thanks for sticking with us and reading up through here!
+
+There are three reasons to write reproducible papers. To be right, to be reproducible, and to be efficient. There are more, but these are convincing to us. In more depth:
+
+1. To avoid errors. Using an automated method for scraping APA-formatted stats out of PDFs, @nuijten2016 found that over 10% of p-values in published papers were inconsistent with the reported details of the statistical test, and 1.6% were what they called "grossly" inconsistent, e.g. difference between the p-value and the test statistic meant that one implied statistical significance and the other did not. Nearly half of all papers had errors in them. 
+
+2. To promote computational reproducibility. Computational reproducibility means that other people can take your data and get the same numbers that are in your paper. Even if you don't have errors, it can still be very hard to recover the numbers from published papers because of ambiguities in analysis. Creating a document that literally specifies where all the numbers come from in terms of code that operates over the data removes all this ambiguity.
+
+3. To create spiffy documents that can be revised easily. This is actually a really big neglected one for us. At least one of us used to tweak tables and figures by hand constantly, leading to a major incentive *never to rerun analyses* because it would mean re-pasting and re-illustratoring all the numbers and figures in a paper. That's a bad thing! It means you have an incentive to be lazy and to avoid redoing your stuff. And you waste tons of time when you do. In contrast, with a reproducible document, you can just rerun with a tweak to the code. You can even specify what you want the figures and tables to look like before you're done with all the data collection (e.g., for purposes of preregistraion or a registered report). 
+
+### Learning goals
+
+By the end of this class you should:
+
+* Know what Markdown is and how the syntax works, 
+* See how to integrate code and data in RMarkdown, 
+* Understand the different output formats from RMarkdown and how to generate them, and
+* Know about generating APA format files with `papaja` and bibtex.
+
+## Getting Started
+
+### Installation
+
+Before we get started with running everything, make sure to have `R` installed (download [here](https://cran.r-project.org/)) and `Rstudio` (download [here](https://www.rstudio.com/products/rstudio/download/#download)). If you haven't yet, go do that first and we'll be here when you get back!
+
+### Exercise
+
+Great, you installed both `R` and `Rstudio`! Next up, making your first RMarkdown file.
+
+Fire up Rstudio and create a new RMarkdown file. Don't worry about the settings, we'll get to that later.
+
+```{r, echo = FALSE}
+knitr::include_graphics('figures/newfile.png')
+```
+
+If you click on "Knit" (or hit `CTRL+SHIFT+K`) the RMarkdown file will run and generate all results and present you with a PDF file, HTML file, or a Word file. If RStudio requests you to install packages, click yes and see whether everything works to begin with. 
+
+We need that before we teach you more about RMarkdown. But you should feel good if you get here already, because honestly, you're about 80% of the way to being able to write basic RMarkdown files. It's _that_ easy.
+
+## Structure of an RMarkdown file
+
+An RMarkdown file contains several parts. Most essential are the header, the body text, and code chunks.
+
+### Header
+
+Headers in RMarkdown files contain some metadata about your document, which you can customize to your liking. Below is a simple example that purely states the title, author name(s), date^[Pro-tip: you can use the `Sys.Date()` function to have that use the current date when creating the document.], and output format.
+
+```yaml
+---
+title: "Untitled"
+author: "NAME"
+date: "July 28, 2017"
+output: html_document
+---
+```
+
+For now, go ahead and set `html_document` to `word_document`, except if you have strong preferences for `HTML` or `PDF`.^[Note: to create PDF documents you also need a TeX installation. Don't know what that is? You probably don't have it then. More info below.]
+
+### Body text
+
+The body of the document is where you actually write your reports. This is primarily written in the Markdown format, which is explained in the [Markdown syntax](#markdown-syntax) section.
+
+The beauty of RMarkdown is, however, that you can evaluate `R` code right in the text. To do this, you start inline code with \`r, type the code you want to run, and close it again with a \`. Usually, this key is below the escape (`ESC`) key  or next to the left SHIFT button.
+
+For example, if you want to have the result of 48 times 35 in your text, you type \` r 48-35\`, which returns `r 48 - 35`. Please note that if you return a value with many decimals, it will also print these depending on your settings (for example, `r pi`).
+
+### Code chunks
+
+In the section above we introduced you to running code inside text, but often you need to take several steps in order to get to the result you need. And you don't want to do data cleaning in the text! This is why there are code chunks. A simple example is a code chunk loading packages. 
+
+First, insert a code chunk by going to `Code->Insert code chunk` or by pressing `CTRL+ALT+I`. Inside this code chunk you can then type for example, `library(ggplot2)` and create an object `x`. 
+
+```{r}
+library(ggplot2)
+
+x <- 1 + 1
+```
+
+If you do not want to have the contents of the code chunk to be put into your document, you include `echo=FALSE` at the start of the code chunk. We can now use the contents from the above code chunk to print results (e.g., $x=`r x`$).
+
+These code chunks can contain whatever you need, including tables, and figures (which we will go into more later). Note that all code chunks regard the location of the RMarkdown as the working directory, so when you try to read in data use the relative path in.
+
+### Exercises
+
+These exercises are all about failure modes to RMarkdown. Go ahead and switch over to your new RMarkdown file.
+
+1. Create a code chunk. In it, use `write.csv(USArrests, "USArrests.csv")` to write out some data to your hard drive. Subsequently, find that file on your computer. Where is it?
+
+2. Load the `ggplot2` package (or any other that you use frequently) in a code chunk and regenerate the document. Now try to load some packages you've never heard of, like `adehabitatHS` or `QCA`. What happens?
+
+### Solutions
+
+1. RMarkdown files operate out of the directory in which they are located. If you read in data, it's important to write paths relatively starting from that "project root" directory, instead of absolute -- otherwise when you share the file the paths will all be wrong. Similarly, if you write out data they go in the root directory.
+
+2. If you don't have packages installed, the knitting process will fail. How do you head this off?  We like to load all our packages at the top of the document so it's easy to know what you need to install to make it run; it's also easy for users to see what packages they need. Some folks `install.packages` *in the script*, though we don't advocate for that here.
+
+## Markdown syntax
+
+Markdown is one of the simplest document languages around, that is an open standard and can be converted into `.tex`, `.docx`, `.html`, `.pdf`, etc. This is the main workhorse of RMarkdown and is very powerful. You can [learn Markdown in five (!) minutes](https://learnxinyminutes.com/docs/markdown/) Other resources include [http://rmarkdown.rstudio.com/authoring_basics.html](), and [this cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf). 
+
+You can do some pretty cool tricks with Markdown, but these are the basics:
+
+* It's easy to get `*italic*` or `**bold**`. 
+* You can get headings using `# heading1` for first level, `## heading2` for second-level, and `### heading3` for third level. 
+* Lists are delimited with `*` for each entry.
+* You can write links by writing `[here's my link](http://foo.com)`.
+
+If you want a more extensive description of all the potential of Markdown, [this introduction to Markdown](https://daringfireball.net/projects/markdown/) is highly detailed.
+
+### Exercises
+
+Swap over to your new sample markdown.
+
+1. Outlining using headings is a really great way to keep things organized! Try making a bunch of headings, and then recompiling your document. 
+2. Add a table of contents. This will involve going to the header of the document (the `YAML`), and adding some options to the `html document` bit. You want it to look like this (indentation must to be correct):
+
+```yaml
+output: 
+  html_document:
+    toc: true
+```
+
+Now recompile. Looks nice, right?^[Pro-tip: you can specify how deep the TOC should go by adding `toc_depth: 2` to go two levels deep]
+
+3. Try adding another option: `toc_float: true`. Recompile -- super cool. There are plenty more great output options that you can modify. [Here is a link to the documentation.](http://rmarkdown.rstudio.com/html_document_format.html)
+
+##  Headers, Tables, and Graphs
+
+### Headers 
+
+We're going to want more libraries loaded (for now we're loading them inline). 
+
+```{r}
+library(knitr)
+library(ggplot2)
+library(broom)
+library(devtools)
+```
+
+We often also add `chunk options` to each code chunk so that, for example:
+
+- code does or doesn't display inline (`echo` setting)
+- figures are shown at various sizes (`fig.width` and `fig.height` settings)
+- warnings and messages are suppressed (`warning` and `message` settings)
+- computations are cached (`cache` setting)
+
+There are many others available as well. Caching can be very helpful for large files, but can also cause problems when there are external dependencies that change. An example that is useful for manuscripts is:
+
+```{r eval=FALSE}
+opts_chunk$set(fig.width=8, fig.height=5, 
+               echo=TRUE, 
+               warning=FALSE, message=FALSE, 
+               cache=TRUE)
+```
+
+
+### Graphs
+
+It's really easy to include graphs, like this one. (Using the `mtcars` dataset that comes with `ggplot2`).
+
+```{r}
+qplot(hp, mpg, col = factor(cyl), data = mtcars)
+```
+
+All you have to do is make the plot and it will render straight into the text. 
+
+External graphics can also be included, as follows:
+
+```{r eval = FALSE}
+knitr::include_graphics("path/to/file")
+```
+
+### Tables
+
+There are many ways to make good-looking tables using RMarkdown, depending on your display purpose. 
+
+- The `knitr` package (which powers RMarkdown) comes with the `kable` function. It's versatile and makes perfectly reasonable tables. It also has a `digits` argument for controlling rounding. 
+- For HTML tables, there is the `DT` package, which provides `datatable` -- these are pretty and interactive javascript-based tables that you can click on and search in. Not great for static documents though. 
+- For APA manuscripts, it can also be helpful to use the `xtable` package, which creates very flexible LaTeX tables. These can be tricky to get right but they are completely customizable provided you want to google around and learn a bit about tex. 
+
+We recommend starting with `kable`:
+
+
+```{r}
+kable(head(mtcars), digits = 1)
+```
+
+### Statistics
+
+It's also really easy to include statistical tests of various types. 
+
+For this, an option is the `broom` package, which formats the outputs of various tests really nicely. Paired with knitr's `kable` you can make very simple tables in just a few lines of code. 
+
+```{r}
+mod <- lm(mpg ~ hp + cyl, data = mtcars)
+kable(tidy(mod), digits = 3)
+```
+
+Of course, cleaning these up can take some work. For example, we'd need to rename a bunch of fields to make this table have the labels we wanted (e.g., to turn `hp` into `Horsepower`). 
+
+We often need APA-formatted statistics. We can compute them first, and then print them inline.
+
+```{r}
+ts <- with(mtcars,t.test(hp[cyl==4], hp[cyl==6]))
+```
+
+> There's a statistically-significant difference in horsepower for 4- and 6-cylinder cars  ($t(`r round(ts$parameter,2)`) = `r round(ts$statistic,2)`$, $p = `r round(ts$p.value,3)`$). 
+
+To insert these stats inline I wrote e.g. `round(ts$parameter, 2)` inside an inline code block.^[APA would require omission of the leading zero. `papaja::printp()` will let you do that, see below.]
+
+Note that rounding can occasionally get you in trouble here, because it's very easy to have an output of $p = 0$ when in fact $p$ can never be exactly equal to 0. Nonetheless, this can help you prevent rounding errors and the wrath of `statcheck`.
+
+### Exercises
+
+1. Using the `mtcars` dataset, insert a table and a graph of your choice into the document.^[If you're feeling uninspired, try `hist(mtcars$mpg)`.]
+
+## Writing APA-format papers
+
+(Thanks to [Frederick Aust](http://github.com/crsh) for contributing this section!)
+
+The end-game of reproducible research is to knit your entire paper. We'll focus on APA-style writeups. Managing APA format is a pain in the best of times. Isn't it nice to get it done for you? 
+
+We're going to use the `papaja` package. `papaja` is a R-package including a R Markdown template that can be used to produce documents that adhere to the American Psychological Association (APA) manuscript guidelines (6th Edition).
+
+### Software requirements
+
+To use `papaja`, make sure you are using the latest versions of R and RStudio. If you want to create PDF- in addition to DOCX-files you need **[TeX](http://de.wikipedia.org/wiki/TeX) 2013 or later**. Try [MikTeX](http://miktex.org/) for Windows, [MacTeX](https://tug.org/mactex/) for Mac, or [TeX Live](http://www.tug.org/texlive/) for Linux. Some Linux users may need a few additional TeX packages for the LaTeX document class `apa6` to work.^[For Ubuntu, we suggest running: `sudo apt-get install texlive texlive-publishers texlive-fonts-extra texlive-latex-extra texlive-humanities lmodern`.]
+
+
+### Installing `papaja`
+
+`papaja` has not yet been released on CRAN but you can install it from GitHub.
+
+```{r install_papapja, eval = FALSE}
+# Install devtools package if necessary
+if(!"devtools" %in% rownames(installed.packages())) install.packages("devtools")
+
+# Install papaja
+devtools::install_github("crsh/papaja")
+```
+
+### Creating a document
+
+The APA manuscript template should now be available through the RStudio menus when creating a new R Markdown file.
+
+```{r template-selection, echo = FALSE, fig.cap = "papaja's APA6 template is available through the RStudio menues."}
+knitr::include_graphics("figures/template_selection.png")
+```
+
+When you click RStudio's *Knit* button `papaja`, `rmarkdown,` and `knitr` work together to create an APA conform manuscript that includes both your manuscript text and the results of any embedded R code.
+
+```{r knit-button, echo = FALSE, fig.cap = "The *Knit* button in the RStudio."}
+knitr::include_graphics("figures/knitting.png")
+```
+
+Note, if you don't have TeX installed on your computer, or if you would like to create a Word document replace `output: papaja::apa6_pdf` with `output: papaja::apa6_word` in the document YAML header.
+
+`papaja` provides some rendering options that only work if you use `output: papaja::apa6_pdf`.
+`figsintext` indicates whether figures and tables should be included at the end of the document---as required by APA guidelines---or rendered in the body of the document.
+If `figurelist`, `tablelist`, or `footnotelist` are set to `yes` a list of figure captions, table captions, or footnotes is given following the reference section.
+`lineno` indicates whether lines should be continuously numbered through out the manuscript.
+
+### Reporting statistical analyses
+
+`apa_print()` facilitates reporting of statistical analyses.
+The function formats the contents of R objects and produces readily reportable text.
+
+```{r eval=FALSE}
+recall_anova <- afex::aov_car(
+  Recall ~ (Task * Valence * Dosage) + Error(Subject/(Task * Valence)) + Dosage
+  , data = mixed_data
+  , type = 3
+)
+recall_anova_results <- apa_print(recall_anova, es = "pes")
+recall_anova_results_p <- apa_print(recall_anova, es = "pes", in_paren = TRUE)
+```
+
+Now, you can report the results of your analyses like so:
+
+> Item valence (\` r anova_results_p$full$Valence\`) and the task affected recall performance, \` r anova_results$full$Task\`; the dosage, however, had no effect on recall, \` r anova_results$full$Dosage\`. There was no significant interaction.
+
+`apa_print()` also creates reportable tables---in this case a complete ANOVA table.
+You can include the table into the document by passing `recall_anova_results$table` to `apa_table()`.
+Remeber to include the `results = "asis"` argument in the chunk options of the chunk that generates the table.
+
+```{r eval=FALSE}
+apa_table(
+  recall_anova_results$table
+  , align = c("lrcrrr")
+  , caption = "ANOVA table for the analyis of the example data set."
+  , note = "This is a table created using R and papaja."
+)
+```
+
+### Cross-referencing
+
+`papaja` enables the use of `bookdown` cross-referencing syntax as detailed in the [bookdown documentation](https://bookdown.org/yihui/bookdown/cross-references.html).
+Generally, a cross-reference to a figure, table, or document section can be done by using the syntax `\@ref(label)`.
+If you set a figure caption in a code chunk via the chunk option `fig.cap = "This is my figure caption."`, the label for that figure is based on the label of the code chunk, e.g., if the chunk label is `foo`, the figure label will be `fig:foo`.
+If you used `knitr::kable()` or `apa_table()` to create a table, the label for that table is, again, based on the label of the code chunk, e.g., if the chunk label is `foo`, the figure label will be `tab:foo`.
+
+### Bibiographic management
+
+It's also possible to include references using `bibtex`, by using `@ref` syntax. An option for managing references is [bibdesk](http://bibdesk.sourceforge.net/), which integrates with google scholar.^[But many other options are possible.] 
+
+With a bibtex file included, you can refer to papers. As an example, `@nuijten2016` results in the in text citation "@nuijten2016", or cite them parenthetically with `[@nuijten2016]` [@nuijten2016]. Take a look at the `papaja` APA example to see how this works. 
+
+`citr` is an R package that provides an easy-to-use [RStudio addin](https://rstudio.github.io/rstudioaddins/) that facilitates inserting citations.
+The addin will automatically look up the Bib(La)TeX-file(s) specified in the YAML front matter.
+The references for the inserted citations are automatically added to the documents reference section.
+
+<!-- # ```{r citr-gif, echo = FALSE, fig.align = "center", fig.cap = "Demonstration of the RStudio addin from the `citr` package that inserts R Markdown citations."} -->
+<!-- # knitr::include_graphics("figures/addin_demo.gif") -->
+<!-- # ``` -->
+
+Once `citr` is installed (`install.packages("citr")`) and you have restarted your R session, the addin appears in the menus and you can define a [keyboard shortcut](https://rstudio.github.io/rstudioaddins/#keyboard-shorcuts) to call the addin.
+
+### Exercise
+
+Make sure you've got `papaja`, then open a new template file. Compile this document, and look at how awesome it is. (To compile you need `texlive`, a library for compiling markdown to PDF, so you may need to wait and install this later if it's not working). 
+
+Try pasting in your figure and table from your other RMarkdown (don't forget any libraries you need to make it compile). Presto, ready to submit!
+
+For a bit more on `papaja`, check out **[this guide](https://rpubs.com/YaRrr/papaja_guide)**. 
+
+
+## Further Frontiers
+
+### Other dissemination methods
+
+We didn't spend as much time on it here, but one of the biggest strengths of RMarkdown is how you can easily switch between formats. For example, we made **[our slides in RMarkdown](https://libscie.github.io/rmarkdown-workshop)** using `revealjs` (`ioslides` is also a good option). 
+
+We also like to share HTML RMarkdown reports with collaborators using the [RPubs service](http://rpubs.com) or hosting of your own choice. It's incredibly easy to share your work publicly this way -- you just push the "publish" button in the upper right hand corner of the RStudio viewer window. Then you set up an account, and you are on your way. We find this is a great method for sending analysis writeups -- no more pasting figures into email! Hosting HTML files on your own page is also easy if you know how that works.
+
+And of course because not everyone uses R, you can simply click on the knit options at the top of the code window to switch to a Word output format. Then your collaborators can edit the text in Word (or upload to Google docs) and you can re-merge the changes with your reproducible code. This isn't a perfect workflow yet, but it's not too bad.  
+
+### Computational reproducibility concerns
+
+Once you provide code and data for your RMarkdown, you are most of the way to full computational reproducibility. Other people should be able to get the same numbers as you for your paper!
+
+But there's still one wrinkle. What if you use linear mixed effect models from `lme4` and then the good people developing that package make it better -- but that changes your numbers? Package versioning (and versioning on `R` itself) is a real concern. To combat this issue, there are a number of tools out there. 
+
+* The `packrat` package is a solution for package versioning for `R`. It downloads local copies of all your packages, and that can ensure that you have all the right stuff to distribute with your work.^[We've found that this package is a bit tricky to use so we don't always recommend it, but it may improve in future.] 
+* Some other groups are using Docker, a system for making virtual machines that have everything for your project inside them and can be unpacked on other machines to reproduce your *exact* environment. We haven't worked with these but they seem like a good option for full reproducibility. 
+* The `checkpoint` package allows you to install packages exactly as they were on CRAN (the main repository for packages), so you can "freeze" your package versions ([more info here](https://cran.r-project.org/web/packages/checkpoint/index.html)).
+
+If you don't want to pursue these heavier-weight options, one simple thing you *can* do is end your RMarkdown with a printout of all the packages you used. Do this by running `sessionInfo`.
+
+```{r}
+sessionInfo()
+```
+
+
+[![](http://www.rstudio.com/images/docs/markdownChunk.png)](http://www.rstudio.com/images/docs/markdownChunk.png)
+
+(An example of using R Markdown to do chunk-based analysis, from [this tutorial](https://support.rstudio.com/hc/en-us/articles/200552086-Using-R-Markdown).)
+
+  
+This last year has brought some very positive changes in the way my lab works with and shares data. As I've mentioned in previous posts ([here](http://babieslearninglanguage.blogspot.com/2014/04/data-analysis-one-step-deeper.html) and [here](http://babieslearninglanguage.blogspot.com/2013/12/a-belated-git-migration.html)), we have adopted the version control tool git and the site [github](http://github.com/) for collaborating and sharing data both within the lab and outside it. I'm very pleased to report that nearly all of our publications for 2014 have [code and data openly shared through github links](http://langcog.stanford.edu/cgi-bin/publications.php).  
+  
+In the course of using this ecosystem, however, I've come to think that it's still not perfect for collaboration. In particular, in order to view analysis results from a collaborator or student, I need to clone into the repository and run all of their analyses, regenerating their figures and working out what they were intending in their code. For simple projects, this isn't so bad. But for anything that requires a modicum of data analysis, it really doesn't work very well. For example, I shouldn't have to rerun all the data munging for an eye-tracking project on my local machine just to see the resulting graphs.  
+  
+For that reason, we've started using [R Markdown](http://rmarkdown.rstudio.com/) for writing our analyses and sharing them with collaborators. R Markdown is a method for writing chunks of code interspersed with simple formatted text. Plots, tables, etc. are inserted inline. This combo then can be rendered to HTML, PDF, or even Word formats. [Here's a nice tutorial](https://support.rstudio.com/hc/en-us/articles/200552086-Using-R-Markdown) – the source of the sample image above. The basics are so simple, it should only take about 5 minutes to get started. And all of this can be done from within [RStudio](http://rstudio.com/), which is a substantially better IDE than the basic Mac R interface.*  
+  
+Using R Markdown, we write our analyses in a (relatively) comprehensible way, explaining and delineating sections as necessary. We then can compile these to HTML and share them using [RPubs](http://rpubs.com/), a service that is currently integrated with the R Markdown functionality in RStudio. That way we can just send links to one another (and we can republish and update with new analyses as needed).  
+  
+Overall, this workflow means that we have full version control over all of our analyses (via git), but also have a friendly way to share with time-crunched or less tech-savvy collaborators. And critically, the overhead to swap to this way of working has been almost nonexistent. Several of our students in the [CSLI undergraduate summer internship program](http://www-csli.stanford.edu/csli-summer-internship-program-2014) this summer completed projects where all their data analysis was done this way. No ecosystem is perfect, but this one is a nice balance between reproducibility and openness on the one hand and ease of use on the other.  
+  
+\-\-\-\-  
+\* I can't help mentioning that it would be nice if the internal plotting window was a quartz window that could save vector PDFs. The quartz() workaround is very ugly when you are working in OS X full-screen mode.  
+  
+\*\* Right now, all RPubs documents are shared publicly, but that's not such a big deal if you're used to working in a primarily public ecosystem using github anyway.

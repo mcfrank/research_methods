@@ -1,0 +1,74 @@
+# Checklist for Paper Submission {#checklist}
+
+
+  
+It's getting to be [CogSci submission time](http://www.cognitivesciencesociety.org/conference/cogsci2017/), and this year I am thinking more about trying to set uniform standards for submission. Following [my previous post on onboarding](http://babieslearninglanguage.blogspot.com/2017/01/onboarding.html), here's a pre-submission checklist that I'm encouraging folks in my lab to follow. Note that, as described in that post, all our papers are written in RStudio using R Markdown, so the paper should be a single document that compiles all analyses and figures into a single PDF. [This process helps deal with much of the error-checking of results](http://babieslearninglanguage.blogspot.com/2015/11/preventing-statistical-reporting-errors.html) that used to be the bulk of my presubmission checking.  
+  
+
+#### Paper writing*
+
+*   Is the first paragraph engaging and clear to an outsider who doesn't know this subfield?
+*   Are multiple alternative hypotheses stated clearly in the introduction and linked to supporting prior literature?
+*   Does the paragraph before the first model/experiment clearly lay out the plan of the paper?
+*   Does the abstract describe the main contribution of the paper in terms that are accessible to a broad audience?
+*   Does the first paragraph of the general discussion clearly describe the contributions of the paper to someone who hasn't read the results in detail? 
+*   Is there a statement of limitations on the work (even a few lines) in the general discussion?
+
+  
+
+#### Analytic code 
+
+#### 
+
+*   Are libraries sourced and constants defined at the top of the doc
+*   Are code blocks short and legible?
+*   If there is complicated code, have you walked a collaborator or friend through it to catch obvious weirdness?
+*   If there is extensive data preprocessing, have you considered factoring to a script where you can check outputs and store an intermediate tidy data frame? 
+*   For long/complex analyses, have you considered factoring helper functions to a separate script? 
+
+  
+
+#### Figures
+
+*   Are all fonts > 9 pts (as an absolute minimum) when rendered into the document?
+*   Is your aspect ratio for panels a bit wider than it is high? (maybe around the golden ratio, ~1.6:1 or 3:2).
+*   Are your axes titled appropriately?
+*   Is your caption clear and informative? Does it describe all aspects of the plot, including error bars?
+*   Is the legend in a useful place? Have you considered [direct labeling](http://directlabels.r-forge.r-project.org/motivation.html) of the plots using [directlabels::geom_dl()](http://directlabels.r-forge.r-project.org/examples.html) or putting the legend below the plot to save space?
+*   Have you used a good color palette? consider [langcog::scale\_colour\_solarized()](https://github.com/langcog/langcog-package)
+*   Are you using an unobtrusive theme like theme_bw()? have you considered using something minimalist like [ggthemes::theme_few()](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html)?
+
+  
+
+#### Reproducibility
+
+*   Is there a github repository?
+*   Does it have all the data and code, including writeup? 
+*   Is the repo organized clearly, with "raw_data," "analysis," and "writeup" directories? (plus "helper" etc. as needed). 
+*   Is there an R project, and is it [packratted](https://rstudio.github.io/packrat/) for package versioning? 
+*   Can someone else re-render your paper from scratch (get a buddy to try this)? if that takes a while, can you cache intermediate data?
+*   Is there a README.md that briefly describes what the project is and how the repo is organized?
+
+  
+
+#### Authorship, formatting, and miscellaneous
+
+*   Have all authors ok'd submission?
+    
+*   Have you checked on grant acknowledgements?
+    
+*   Are all section headings maximally informative?
+*   Are results and methods described in the past tense?
+*   Are there links to your preregistration, experiment code, and data/analysis repository?
+*   Did you spell check, since [R Studio doesn't have inline spellchecking](https://support.rstudio.com/hc/en-us/community/posts/218721048-Online-spell-checking-Important-feature-request-for-Rmarkdown)?
+*   Did you check for referent-less "this" (my pet prescriptive peeve, as in "This shows that ...")?
+
+  
+
+Good luck on your submissions!
+
+  
+
+\-\-\-
+
+_*Note: These may seem a bit formulaic, but A) CogSci papers are very short (6 pages), and B) often a writing formula is a good starting point for creative departures._

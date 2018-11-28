@@ -1,0 +1,76 @@
+# Open Science {#openscience}
+
+
+What is "the open science movement"? It's a set of beliefs, research practices, results, and policies that are organized around the central roles of transparency and verifiability in scientific practice. An introductory thread.
+
+The core of this movement is the idea of "nullius in verba" - take no one's word for it. The distinguishing feature of science on this account is the ability to verify claims. Science is independent of the scientist and subject to skeptical inquiry. 
+
+These ideas about the importance of verification are supported by a rich and growing research literature suggesting that not all published science is verifiable. Some papers have typos, some numbers can't be reproduced, some experiments can't be replicated independently.
+
+This research is translated into practice through tool-building and policy. Tools like http://github.com  and http://osf.io   facilitate the sharing of materials, code,  and data, which allow analytic reproduction and independent replication to verify findings. 
+
+http://osf.io  and http://aspredicted.org  also allow preregistration, providing verifiability of analytic hypotheses. Prereg is not about discouraging exploration! It's about being transparent about *what you knew* before data collection. /5
+
+The file-drawer problem (unpublished negative findings) is a major challenge to transparency goals. "Registered reports" provide preregistration plus review & commentary; they increase transparency by ensuring publication regardless of result.
+
+Tool building and science translates to policy through organizations like @improvingpsych and journal guidelines & initiatives (e.g., badges). Funder initiatives for openness also are policy targets. /7
+
+https://cos.io/our-services/top-guidelines/ …
+https://grants.nih.gov/policy/sharing.htm …
+
+
+But making policy based on scientific evidence is always tricky, and polices may have unintended effects, or reveal further weaknesses. Case study: in one of our studies, open data policies revealed further weaknesses in analytic reproducibility. /8
+
+http://rsos.royalsocietypublishing.org/content/5/8/180448 …
+ 
+Open access is an important policy frontier: without access to the literature, results are only verifiable (or readable!) by those lucky enough to have subscriptions. Preprints and "green" OA initiatives address this issue. /9
+
+https://academia.stackexchange.com/questions/51996/what-is-the-difference-between-green-and-gold-open-access …
+http://psyarxiv.org 
+
+
+Transparency, verifiability (and the skepticism that comes with them) can be uncomfortable. Why am *I* being verified and not someone else? Why don't you trust me? I'm an expert! To me, these feelings are very understandable (I have them myself sometimes). /10
+
+Some ways I gently push back: 1) appeals to the shared project, rather than the individual (we're in this together). 2) appeals to the values (nullius in verba again!). 3) argument from the counterfactual: would it be better not to know we're wrong? /11
+
+
+There is a lot of change happening, and change can be disorienting. But I'm very optimistic about psychology and science more broadly, and very glad that I'm working at this time and not another. /end
+
+_tl;dr: Open science practices themselves don't make a study interesting. They are essential prerequisites whose absence can undermine a study's value._  
+  
+There's a tension in discussions of open science, one that is also mirrored in my own research. What I really care about are the big questions of cognitive science: what makes people smart? how does language emerge? how do children develop? But in practice I spend quite a bit of my time doing meta-research on reproducibility and replicability. I often hear critics of open science – focusing on replication, but also other practices – objecting that open science advocates are making science more boring and decreasing the focus on theoretical progress (e.g., [Locke](https://www.researchgate.net/profile/Edwin_Locke/publication/277087389_Theory_Building_Replication_and_Behavioral_Priming_Where_Do_We_Need_to_Go_From_Here/links/55d4b89708aef1574e975920.pdf), [Strobe & Strack](http://journals.sagepub.com/doi/abs/10.1177/1745691613514450)).  The thing is, I don't completely disagree. Open science is not inherently interesting.  
+  
+Sometimes someone will tell me about a study and start the description by saying that it's pre-registered, with open materials and data. My initial response is "ho hum." I don't really care if a study is preregistered – _unless _I care about the study itself and suspect p-hacking. Then the only thing that can rescue the study is preregistration. Otherwise, I don't care about the study any more; [I'm just frustrated by the wasted opportunity](http://babieslearninglanguage.blogspot.com/2016/03/limited-support-for-app-based.html).  
+  
+So here's the thing: Although being open can't make your study interesting, _the failure to pursue open science practices can undermine the value of a study._ This post is an attempt to justify this idea by giving an informal Bayesian analysis of what makes a study interesting and why transparency and openness is then the key to maximizing study value.  
+  
+  
+
+#### **What makes a scientific study interesting?** 
+
+I take a fundamentally Bayesian approach to scientific knowledge. If you haven't encountered Bayesian philosophy of science,  [here's a nice introduction by Strevins](http://www.strevens.org/research/simplexuality/Bayes.pdf); I find this framework nicely fits my intuitions about scientific reasoning. The core assumption is that knowledge in a particular domain can be represented by a probability distribution over theoretical hypotheses, given the available evidence.* This distribution can be decomposed into the product of 1) the prior probability of each hypothesis and 2) the likelihood of the hypothesis given the available evidence. New evidence changes this posterior distribution, and the amount of change is quantified by [information gain](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). Thus, an "interesting" study is simply one that leads to high information gain.  
+  
+Some good intuitions fall out of this decision. First, consider a study that decisively selects between two competing hypotheses that are equally likely based on prior literature; this study leads to high information gain and is clearly quite "theoretically interesting." Next, consider a study that provides strong support for a particular hypothesis, but the hypothesis is already deeply established in the literature; it's much less informative and hence much less interesting. Would you spend time conducting a large, high-powered test of [Weber's law](https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law)? Probably not – it would probably show the same regularity as the hundreds or thousands of studies before it. Finally, consider a study that collects a large amount of detailed data, but the design doesn't distinguish between hypotheses. Despite the amount of data, the theoretical progress is minimal and hence the study is not interesting.**  
+  
+Under this definition, an interesting study can't just have the potential to compare between hypotheses, it must provide evidence that changes our beliefs about which one is more probable.*** Larger samples and more precise measurements typically result in greater amounts of evidence, and hence lead to more important ("more interesting") studies. In the special case where the literature is consistent with two distinct hypotheses, evidence can be quantified by the [Bayes Factor](https://en.wikipedia.org/wiki/Bayes_factor). The bigger the Bayes Factor, the more evidence a study provides in favor of one hypothesis compared with the other, and the greater the information gain.  
+  
+
+#### **How does open science affect whether a study is interesting?**
+
+Transparency and openness in science includes the sharing of code, data, and experimental materials as well as the sharing of protocols and analytic intentions (e.g., through preregistration). Under the model described above, none of these practices add to the informational value of a study. Having the raw data available or knowing that the inferential statistics are appropriate due to preregistration can't make a study better – the data are still the data, and the evidence is still the evidence.  
+_If there is uncertainty about the correctness of a result, the informational value of the study is decreased._ Consider a study that in principle decides between two hypotheses, but imagine the skeptical reader has no access to the data and harbors some belief that there has been a major analytic error. The reader can quantify her uncertainty about the evidential value of the study by assigning probabilities to the two outcomes: either the study is right, or else it's not. Integrating across these two outcomes, the value of the study is of course lower than if she knows the study has now error. Or similarly, imagine that the reader believes that another, different statistical test was equally appropriate but that the authors selected the one they report post hoc (leading to an inflation of their risk of a false positive).**** Again, uncertainty about the presence of p-hacking decreases the evidential value of the study, and the decrease is proportional to the strength of the belief.   
+  
+_Open science practices decrease the belief in p-hacking or error, and thus preserve the evidential value of the study._ If the skeptical reader has the ability to repeat the data analysis ("computational reproducibility"), the possibility of error is decreased. If she has access to the preregistration, the possibility of p-hacking is similarly minimized. Both of these steps mean that the informational value of the study is maintained rather than decreased.  
+  
+One corollary to this formulation is that replication can be a way to "rescue" particular interesting research designs. A finding can – by virtue of its design – have the potential to be theoretically important, but it may have limited evidential value, whether because of the small sample, imprecision of the measurements, or worries about error or p-hacking. In this case, a replication can substantially alter the theoretical landscape by adding evidence to the picture (this point is made by [Klein et al.](http://psycnet.apa.org.stanford.idm.oclc.org/record/2014-38072-004) in their commentary on the ManyLabs studies). So then replication in general can be interesting _or_ uninteresting – depending on the strength of the evidence for the original finding and its theoretical relevance. The most interesting replications will be those that target a finding with a design that allows for high information gain but for which the evidence is weak.  
+  
+
+#### **Conclusions**
+
+Open science practices won't make your study interesting or important by themselves. The only way to have an interesting study is the traditional way: create a strong experimental design grounded in theory, and gather enough evidence to force scientists to update their beliefs. But what a shame if you have gone this route and then the value of your study is undermined! Transparency is the only way to ensure that readers assign the maximal possible evidential value to your your work.  
+  
+\-\-\-  
+\* As a first approximation, let's be subjectively Bayesian, so that the distribution is in the heads of individual scientists and represents their beliefs. Of course, no scientist is perfect, but we're thinking about an idealized rational scientist who weighs the evidence and has reasonably fair subjective priors.  
+\*\* Advocates for hypothesis-neutral data collection argue that later investigators can bring their own hypotheses to a dataset. In the framework I'm describing here, you could think about the dataset having some latent value that isn't realized until the investigator comes along and considers whether the data are consistent with their particular hypotheses. Big multivariate datasets can be very informative in this way, even if they are not collected with any particular analysis in mind. But investigators always have to be on their guard to ensure that particular analyses aren't undermined by the post-hoc nature of the investigation.   
+\*\*\* Even though evidence in this sense is computed after data collection, that doesn't rule out the prospective analysis of whether a study will be interesting. For example, you can compute the _expected information gain_ using optimal experimental design. [Here's a really nice recent preprint](https://psyarxiv.com/h457v) by Coenen et al. on this idea.  
+\*\*\*\* I know that this use of the p-hacking framework mixes my Bayesian apples in with some frequentist pairs. But you can just as easily do post-hoc overfitting of Bayesian models (see e.g., the [datacolada post](http://datacolada.org/13) on this topic).

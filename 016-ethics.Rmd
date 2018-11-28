@@ -1,0 +1,137 @@
+# Ethics {#ethics}
+
+I. Ethical principles in the treatment of participants
+ 
+Has anyone been in a research study? 
+	Can someone talk about the experience? 
+	Highlight: informed consent, study, debrief. These come from an IRB.
+
+General goal of regulating research: Balancing the risks and benefits of research. 
+	Risks incurred by participants. 
+	Who incurs the benefits? 
+		Both participant and society more broadly (knowledge generation).  
+
+Common Rule (Federal Policy for the Protection of Human Subjects):
+That people who participate as subjects in covered research are selected equitably and give their fully informed, fully voluntary written consent; and
+That proposed research be reviewed by an independent oversight group referred to as an Institutional Review Board (IRB), and approved only if risks to subjects have been minimized and are reasonable in relation to anticipated benefits, if any, to the subjects, and the importance of the knowledge that may reasonably be expected to result.
+
+Derived from Belmont Report (1979): We should follow basic ethical principles:
+Respect for Persons
+First, that individuals should be treated as autonomous agents, and
+Second, that persons with diminished autonomy are entitled to protection.
+Beneficence
+Do not harm
+Maximize possible benefits and minimize possible harms
+Justice
+On whom do the burdens fall?
+To whom do the benefits accrue?
+ 
+These are manifest in:
+Informed Consent
+Instantiation of respect for persons
+Respect for persons requires that subjects, to the degree that they are capable, be given the opportunity to choose what shall or shall not happen to them.
+Consent entails: Information, comprehension, voluntariness
+Assessment of Risk and Benefits
+Instantiation of beneficence
+Performed by investigator, reviewed by IRB
+Selection of Subjects
+Instantiation of justice
+Justification of the inclusion of subjects in research
+
+Failure modes for Belmont in psychology. (Most of) our research doesn’t involve extreme risk, drugs, etc.
+What are the most common failure modes for the Belmont principles in standard issue psychological research?
+Are there individual or lab policies that will increase ethics compliance for your work?
+Debriefing failures? 
+Anderson, C. A., Lepper, M. R., & Ross, L. (1980). Perseverance of social theories: The role of explanation in the persistence of discredited information. Journal of personality and social psychology, 39(6), 1037. (LINK)
+
+Should we treat all populations equally under this basic rule? 
+Principle of Justice: “When vulnerable populations are involved in research, the appropriateness of involving them should itself be demonstrated. A number of variables go into such judgments, including the nature and degree of risk, the condition of the particular population involved, and the nature and level of the anticipated benefits”
+
+What are some vulnerable populations?
+Vulnerable populations (some good slides) defined as: 
+Pregnant women, fetuses, neonates; 
+Prisoners; 
+Children;
+Also: veterans; persons with mental disabilities or economical disadvantages; educationally disadvantaged persons; employees and students; other potentially vulnerable populations.
+
+Does anyone here do research with vulnerable populations?  
+Talk about specific risks for kids and how to mitigate
+Are Turkers a vulnerable population?
+  
+Bad experiences with IRB? 
+What do you do?
+
+Natural experiments
+	Michelle N. Meyer on the Facebook study
+
+II. Data Stewardship
+ 
+Two concerns:
+Privacy of participants
+Storage of primary scientific materials
+ 
+DISCUSSION:
+What is the risk in failing to protect privacy for participants? What are the ways that data from a psychology experiment could be harmful?
+What is the risk from failing to store primary data? What are the ways this practice could also cause (scientific) harm.
+ 
+Stanford’s standards for data classification:
+Low risk: designed for sharing, no problem with disclosure
+Medium risk: not generally available, could have an adverse impact if shared
+High risk: protected by law, needs to be reported, significant negative impact
+
+Where is research data in this hierarchy? 
+ 
+HIPAA (Health Insurance Portability and Accountability Act, 1996) and privacy
+Restricts the disclosure of PHI (Private Health Information) – Restricted data
+Standards for storage of “individually identifiable health information”
+E.g. relating to medical conditions, treatment, etc.
+Does not relate to disclosure of “de-identified” health information
+What truly constitutes deidentification?
+ 
+Key fact: Restricted data cannot be stored on a computer or transmitted between computers without encryption.
+ 
+DISCUSSION:
+How do you store your own data?
+What does your lab do?
+What principles can we extract that may be globally useful?
+ 
+III. Publication Ethics
+  
+What does authorship mean to you?
+ 
+From the APA publication manual:
+“Authorship is reserved for people who make a primary contribution to and hold primary responsibility for the data, concepts, and interpretation of results for a published work. Authorship encompasses not only those who do the actual writing but also those who have made substantial scientific contributions to a study… To prevent misunderstanding and to preserve professional reputations and relationships, it is best to establish as early as possible in a research project who will be listed as an author, what order of authorship will be, and who will receive an alternative form of recognition.” (Section 1.03)
+ 
+From Cozzarelli (2004), on the PNAS publication policy:
+ 
+“All collaborators share some degree of responsibility for any paper they coauthor. Some coauthors have responsibility for the entire paper as an accurate, verifiable report of the research. These include coauthors who are accountable for the integrity of the data reported in the paper, carry out the analysis, write the manuscript, present major findings at conferences, or provide scientific leadership to junior colleagues. Coauthors who make specific, limited, contributions to a paper are responsible for their contributions, but they may have only limited responsibility for other results. While not all coauthors may be familiar with all aspects of the research presented in their paper, all collaborators should have in place an appropriate process for reviewing the accuracy of the reported results.”
+ 
+Resources:
+Stanford Publication Authorship Policies: http://doresearch.stanford.edu/policies/research-policy-handbook/conduct-research/academic-authorship
+APA Ethics Code: http://www.apa.org/ethics/code/index.aspx
+Cozzarelli, N. R. (2004) Proc. Natl. Acad. Sci. USA 101, 3721–3722. 
+ 
+DISCUSSION:
+What do different authorship roles like first, corresponding, and senior author mean?
+How should we determine authorship on a paper?
+ 
+IV. Error and Misconduct
+ 
+(Take two index cards. Write on one a mistake you’ve made, and on the other, a situation where you feel you observed an ethical violation, an error, or misconduct. Both should be situations you’re willing to share with the class.)
+
+What are the substantive types of error/misconduct? How can we classify them?
+What are the appropriate remedies?
+ 
+From the APA Ethics Code:
+ 
+“If psychologists discover significant errors in their published data, they take reasonable steps to correct such errors in a correction, retraction, erratum, or other appropriate publication means.”
+ 
+From Stanford’s Policies:
+ 
+“Any individual who believes an act of research misconduct has occurred or is occurring should notify the dean of the appropriate school, who, after preliminary assessment indicating grounds to proceed, should immediately begin an inquiry and so inform the Dean of Research, who acts on behalf of the Provost. Reporting such concerns in good faith is a service to the University and to the larger academic community, and will not jeopardize anyone's employment. Stanford University prohibits retaliation of any kind against a person who, acting in good faith, reports or provides information about suspected or alleged misconduct.”
+ 
+Resources:
+Stanford’s Policies on Research Conduct: http://doresearch.stanford.edu/policies/research-policy-handbook/conduct-research
+Office of Research Integrity: http://www.ori.dhhs.gov/
+NIH Policies on Scientific Integrity: http://www.nih.gov/about/director/sci-int-nov2012.pdf
+http://retractionwatch.wordpress.com/category/by-subject/psychology/

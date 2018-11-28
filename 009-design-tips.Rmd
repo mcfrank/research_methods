@@ -1,0 +1,85 @@
+# Experimental Design Tips {#designtips}
+
+
+tl;dr: The second of a [two part series](http://babieslearninglanguage.blogspot.com/2015/08/a-moderates-view-of-reproducibility.html). Recommendations for improving reproducibility – many require slowing down or making hard decisions, rather than simply following a different rule than you followed before.  
+  
+In my [previous post](http://babieslearninglanguage.blogspot.com/2015/08/a-moderates-view-of-reproducibility.html), I wrote about my views on some proposed changes in scientific practice to increase reproducibility. Much has been made of preregistration, publication of null results, and Bayesian statistics as important changes to how we do business. But my view is that there is relatively little value in appending these modifications to a scientific practice that is still about one-off findings; and applying them mechanistically to a more careful, cumulative practice is likely to be more of a hindrance than a help. So what do we do? Here are the modifications to practice that I advocate (and try to follow myself).  
+  
+
+#### **1\. Cumulative study sets with internal replication. **
+
+If I had to advocate for a single change to practice, this would be it. In my lab we _never_ do just one study on a topic, unless there are major constraints of cost or scale that prohibit that second study. _Because one study is never decisive.* _Build your argument cumulatively, [using the same paradigm](http://datacolada.org/2014/12/18/31-women-are-taller-than-men-misusing-occams-razor-to-lobotomize-discussions-of-alternative-explanations/), and include replications of the key effect along with negative controls. This cumulative construction provides "pre-registration" of analyses – you need to keep your analytic approach and exclusion criteria constant across studies. It also gives you a good intuitive estimate of the variability of your effect across samples. The only problem is that it's harder and slower than running one-off studies. Tough. The resulting quality is orders of magnitude higher. 
+
+  
+
+If you show me a one-off study and I fail to replicate it in my lab, I will tend to suspect that you got lucky or p-hacked your way to a result. But if you show me a package of studies with four internal replications of an effect, I will believe that you know how to get that effect – and if I don't get it, I'll think that _I'm_ doing something wrong. 
+
+  
+
+#### **2\. Everything open by default.**
+
+There is a huge psychological effect to doing all your work knowing that everyone will see all your data, your experimental stimuli, and your analyses. When you're tempted to write sloppy, uncommented code, you think twice. Unprincipled exclusions look even more unprincipled when you have to justify each line of your analysis.** And there are incredible benefits of releasing raw stimuli and data – reanalysis, reuse, and error checking. It can make you feel very exposed to have all your experimental data subject to reanalysis by reviewers or random trolls on the internet. But if there is an obvious, justifiable reanalysis that A) you didn't catch and B) provides evidence against your interpretation, you should be _very_ grateful if someone finds it (and even more so if it's before publication).  
+
+  
+
+#### **3\. Larger N. **
+
+Increasing sample sizes is a basic starting point that almost every study could benefit from. [Simmons et al. (2011)](http://pss.sagepub.com/content/early/2011/10/17/0956797611417632) advocated N=20 per cell then realized that was [far too few](http://datacolada.org/2014/05/01/20-we-cannot-afford-to-study-effect-size-in-the-lab/); [Vazire asks for 200](http://sometimesimwrong.typepad.com/wrong/2014/10/open-letter-to-editors.html), perhaps with her tongue in her cheek. _I'm pretty darn sure there's no magic number._ Psychophysics studies might need a dozen ([or 59](http://t.co/Q2bPbmsSwi)). Individual differences studies might need 10,000 or more. But if there's one thing we've learned from the recent focus on statistical power, estimating any effect accurately requires much more power than we expect. My rough guide is that the community standards for N in each subfield are almost always off by at least a factor of 2, just in terms of power for statistical significance. And they are off by a factor of 10 for collecting effect size estimates that will support model-based inferences.  
+  
+
+#### 4\. Better visualizations of variability. 
+
+If you run a lot of studies, show all of their results together in one big plot. And show us the variability of those measurements in a way that allows us to understand how much precision you have. Then we will know whether you really have evidence that you understand and whether you can consistently predict either the existence or the magnitude of an effect. Use 95% CIs or Bayesian credible intervals or HPD intervals or whatever strikes your fancy. [Frequentist CIs do perform badly when you have just a handful of datapoints](http://pcl.missouri.edu/sites/default/files/Morey.etal_.2014.CI_.pdf), but they do fine when N is large (see above). But come on: this one is obvious: [Standard error of the mean is a terrible guide to inference](http://www.apastyle.org/manual/related/cumming-and-finch.pdf). I care much less about frequentist or Bayesian and much, much more about whether it's 95% vs. 68%. 
+
+  
+
+#### **5\. Manipulation checks, positive controls, and negative controls. **
+
+[The reproducibility project was a huge success](http://www.theatlantic.com/health/archive/2015/08/psychology-studies-reliability-reproducability-nosek/402466/), and I'm very proud to have been part of it. But I felt that one intuition about replicability was missing from the assessment of the results: whether the experimenters thought they could have "fixed" the experiment. Meaning, there are some findings that when they fail to replication, you have no recourse – you have no idea what to do next. The original paper found a significant effect and a decent effect size, you find nothing. But there are other experiments where you know what happened, based on the pattern of results: the manipulation failed, or the population was different, or the baseline didn't work. In these studies, you typically know what to do next – strengthen the manipulation, alter the stimuli for the population, modify the baseline.  
+  
+The paradigms you can "debug" – repeat iteratively to adjust them for your situation or population – typically have a number of internal controls. These usually include manipulation checks, positive controls, or negative controls (sometimes even all three). Manipulation checks tell you that the manipulation had the desired effect – e.g., if you are inducing people to identify with a particular group, they actually do, or if you are putting people under cognitive load they are actually under load. Negative controls show that in the absence of the manipulation there is no difference in the measure – they are a sanity check that other aspects of the experimental situation are not causing your effect. Positive controls tell you that _some_ manipulation can cause a difference in your measure, hence it is a sensitive measure, even if the manipulation of interest fails. The output of these checks can provide a wealth of information about a failure to replicate and can lead to later successes.  
+  
+
+#### **6\. Predictions from (quantitative) theory.**
+
+If all of our theories are vague, verbal one-offs then they provide very little constraint on our empirical measures. That's a terrible situation to be in as a scientist. If we can create quantitative theories that make empirical predictions, then these theories provide strong constraints on our data – if we don't observe a predicted pattern, we need to rethink either the model or the experiment. While neither one is guaranteed to be right, the theory provides an extra check on the data. I wrote more about this idea [here](http://babieslearninglanguage.blogspot.com/2014/06/shifting-our-cultural-understanding-of.html).  
+  
+
+#### **7\. A broader portfolio of publication outlets.**
+
+If every manipulation psychologists conducted were important, then we'd want to preregister and publish all of our findings. This situation is – arguably – the case in biomedicine. Every trial is a critical part of the overall outlook on a given drug, and most trials are expensive and risky, so they require regulation and care. But, like it or not, experimental psychology is different. Our work is cheap and typically poses little risk to participants, and there are an infinity of possible psychological manipulations that don't do anything and may never be of any importance.  
+
+  
+
+So, as I've been arguing in previous posts, I think it's silly to advocate that psychologists publish all of their (null) results. There are plenty of reasons _not_ to publish a null result: boringness, bad design, evidence of experimenter error, etc. Of course, there are _some_ null results that are theoretically important and in those cases, we absolutely should publish. But my own research would grind to a halt if I had to write up all the dumb and unimportant things that I've pursued and dropped in the past few years.***
+
+  
+
+What we need is a broader set of publication outlets that allow us to publish all of the following: exciting new breakthroughs; theoretically deep, complex study sets; general incremental findings; run-of-the-mill replications; and messy, boring, or null results. No one journal can be the right home for all of these. In my view, there's a place for _Science_ and _Nature_ – or some idealized, academically-edited, open-access version of them. I love reading and writing short, broad, exciting reports of the best work on a topic. But there's also a place for journals where the standard is correctness and the reports can include whatever level of detail is necessary to document messy, boring, or null findings that nevertheless will be useful to others going forward. Think PLoS ONE, perhaps without the high article publication charge. The broader point is that we need a robust ecosystem of publication outlets – from high-profile to run-of-the-mill – and some of these outlets need to allow for publication of null results. But whether we publish in them should be a matter of our own scientific responsibility. 
+
+  
+
+#### Conclusions.
+
+A theme running throughout all these recommendations is that I generally believe in all of the principles advocated by folks who want prereg, publication of nulls, and Bayesian data analysis. But their suggestions are almost always posed as _mechanical rules_: rules that you can follow and know that you are doing science the right way. But these rules should be tempered by our judgment. Preregister if you think that previous work doesn't sufficiently constrain analysis. Publish nulls if they are theoretically important. Use Bayesian tools if they afford some analytic advantages relative to their complexity. But don't do these things just because someone said to. Do them because – in your best scientific judgment – they improve the reliability and validity of the argument you are making.
+
+  
+
+\-\-\-\-\-
+
+Thanks to Chris Potts for valuable discussion. Typos corrected afternoon 8/31.
+
+  
+
+\* And, I don't know about you, but when I can only do one study, I always get it wrong. 
+
+\*\* I especially like this one: data <- data\[data$subid != "S011",\]. Damn you, subject 11.
+
+\*\*\* I also can't think of anything more boring than reading Studies 1 – 14 in my paper titled "A crazy idea about word learning that never really should have worked anyway and, in the end, despite a false positive in Study 3, didn't amount to anything."
+
+## Manipulation Checks
+
+## Working with Participants 
+
+## Piloting and Debugging
+
